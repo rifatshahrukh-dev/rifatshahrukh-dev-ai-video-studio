@@ -90,7 +90,10 @@ Ask once, offer the defaults:
 Only needed for ads that show a person (e.g. a seller on a live stream). Explain the options honestly:
 1. **Real footage (best and free):** film a team member or friend with a phone on a tripod. Offer a shot list.
 2. **Free stock footage:** Pexels / Pixabay / Mixkit (check the licence of each clip).
-3. **Free AI video on Kaggle** (Wan 2.2): decent for short scenes, can look AI-made. Setup:
+3. **Best value: LTX-2.5 on a rented GPU (Runpod)** — best quality and speed in our tests, a few cents per clip.
+   The user creates a Runpod account, adds a small credit, saves an API key as a network secret, and (for gated
+   models) a read-only Hugging Face token as a Runpod secret. See `PLAYBOOK.md` §6 for the rented-GPU checklist.
+4. **Completely free: AI video on Kaggle** (Wan 2.2): decent for short scenes, can look AI-made. Setup:
    1. The user creates a free account at https://www.kaggle.com and **verifies a phone number**
       (Settings → Phone verification), required for GPUs (about 30 free GPU hours per week).
    2. Settings → API → **Create New Token**. On a laptop: save it as `~/.kaggle/kaggle.json`. In a Claude
@@ -98,7 +101,8 @@ Only needed for ads that show a person (e.g. a seller on a live stream). Explain
       cloud environments). Never in the chat.
    3. Make a notebook with `tools/kaggle/make_wan_clips.py <config.json>`, push it with the Kaggle API
       (`POST https://www.kaggle.com/api/v1/kernels/push`, GPU + internet on), poll its status, download the clips.
-4. **Kling AI (PAID, most realistic):** only on the user's request. Connect the Kling connector in Claude, check
+5. **Other paid options** (MiniMax H3 service, Kling): only on the user's request. Kling was the weakest in our
+   test. Connect the Kling connector in Claude, check
    the credit balance, and before **every** job show the exact inputs, settings and expected credits.
 
 ## Step 7 — Cloud sessions only: allowed network domains
@@ -112,6 +116,7 @@ kit uses. Tell the user to add them under the environment's **Network access →
 | package managers (npm, PyPI) | installs | **MANDATORY** (keep "allow package managers" on) |
 | `www.kaggle.com`, `www.kaggleusercontent.com` | free AI video | OPTIONAL |
 | `huggingface.co`, `*.hf.space` | free image editing Spaces, transcription models | OPTIONAL |
+| `*.runpod.io`, `*.runpod.net` | rented GPUs (LTX-2.5, MiniMax H3) | OPTIONAL |
 | `kling.ai`, `*.klingai.com` | paid Kling AI | OPTIONAL |
 | `pexels.com`, `pixabay.com`, `mixkit.co` (+ their CDNs) | stock footage | OPTIONAL |
 
@@ -148,6 +153,7 @@ words, lip sync if someone speaks on camera) and tell the user what you checked.
 | Music / pop-up sound preferences | OPTIONAL (good defaults) |
 | Kaggle account + token (free AI footage) | OPTIONAL |
 | Hugging Face token, stock-footage sites | OPTIONAL |
+| Runpod account + small credit (rented GPUs, recommended for AI footage) | OPTIONAL, paid per minute, approval per job |
 | Kling (paid) | OPTIONAL, only on explicit request |
 | Allowed network domains | **MANDATORY** in Claude cloud sessions (the mandatory rows of Step 7) |
 | GitHub repo | OPTIONAL |

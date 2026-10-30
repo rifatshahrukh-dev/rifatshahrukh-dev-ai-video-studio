@@ -96,8 +96,17 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
 
 ## 6. AI-generated people and footage
 
-- **Free first** (Wan on free cloud GPUs), but be honest: at low resolution it can look AI-made. If the owner says
-  it looks fake, offer: real filming (best), stock footage, or paid (Kling) with a cost estimate.
+- **Which model (from a side-by-side test, same start photo and prompt):**
+  1. **LTX-2.5 on a rented GPU** — best quality *and* speed: under 2 min per 5-s clip, ~$0.04 per extra clip. Batch
+     several shots into one session (setup ~5 min). Its weak spot: see "unseen sides" below.
+  2. **MiniMax H3** — clean motion, but ~25 min per clip on one GPU; the open model is region-limited (not for use or
+     display in the US/EU/UK/South Korea), so for worldwide ads use MiniMax's paid service (~$0.20–0.65/clip).
+  3. **Kling** — paid and was the weakest in the test.
+  4. **Wan 2.2 on Kaggle** — completely free but looks AI-made at low resolution.
+  Always offer real filming as the best option, and get approval with a cost estimate for anything paid.
+- **Unseen sides are invented.** A model only knows what the start photo shows: if the person turns a product, the
+  back is guessed (often a copy of the front). Either prompt it so the back is never shown (hold still, tilt, run a
+  hand over the detail) or give a real photo of the back as a later keyframe.
 - **Approved start frame.** Generate/approve a still of the person first; every clip starts from a real frame of
   that person. Restart chains from known-good frames; never chain off a frame where the face has drifted.
 - **Eye line:** for live-stream / talking-to-camera shots, the start photo must already look into the lens.

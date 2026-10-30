@@ -62,13 +62,15 @@ Free tools cover most videos well. For some jobs, a paid service is noticeably b
 
 | Paid option | Better for | Instead of the free… |
 |---|---|---|
-| **Kling AI** (credits; e.g. ~10 credits per second of 1080p on a turbo model) | Realistic AI presenters and product shots that don't look AI-made | Wan 2.2 on Kaggle, which can look artificial |
+| **LTX-2.5 on a rented GPU** (e.g. Runpod A100, ~$1.20–1.40/hour) — **recommended** | Realistic AI presenters and product shots: in our side-by-side test (same start photo) it gave the best quality **and** speed: under 2 min per 5-s clip, about **$0.04 per extra clip** (~$0.16 for a one-off). Free model licence for companies under $10M revenue | Wan 2.2 on Kaggle, which can look artificial |
+| **MiniMax H3** (open model on a rented GPU, or MiniMax's own paid service: ~$0.20–0.65 per 5-s clip, $25 minimum top-up) | Clean, natural motion | Slow on one GPU (~25 min/clip); the open model can't be used or shown in the US/EU/UK/South Korea — use their paid service for worldwide ads |
+| **Kling AI** (credits; ~10 credits per second at 1080p on a turbo model) | Another paid option | In our test it was the weakest of the three (eye line off-camera) and the priciest per clip |
 | **ElevenLabs** | Premium voices, cloning your own voice | Gemini / Kokoro voices |
 | **Gemini API paid tier** | Higher daily limits for long or many videos | Gemini free tier |
-| **Google Veo, Runway** | Cinematic AI video clips | Wan 2.2 |
+| **Google Veo, Runway** | Cinematic AI video clips | LTX / Wan |
 | **HeyGen avatars** | Talking presenters with real lip sync | Music and captions over AI footage (no lip sync) |
 | **Paid stock or music libraries** (e.g. Storyblocks, Artlist, Epidemic Sound) | Real filmed footage and produced music tracks | Free stock sites and code-generated music |
-| **Cloud GPUs** (e.g. RunPod) | Faster, higher-resolution free models, no weekly limit | Kaggle's free GPUs |
+| **Cloud GPUs** (e.g. Runpod) | Run the best free models (LTX-2.5, MiniMax H3) fast, no weekly limit; pay only by the minute. A permanent storage disk (~$5–6/month for LTX) only pays off at ~50 sessions a month: batch clips into one session instead | Kaggle's free GPUs |
 
 Real footage filmed on a phone is still the best free upgrade of all: the agent can give you a shot list.
 
@@ -104,8 +106,8 @@ first video. You answer questions; it does the work.
 - **Recreated UI** (social posts, comment sheets, live-stream screens, notifications) animated frame by frame.
 - **Sound design**: a notification sound on every pop-up, order chimes, pops (`shared/audio/sfx/`).
 - **Music generated in code** (`tools/music/`): calm corporate or funky/groovy, so there are no licensing problems.
-- **AI footage, free**: Wan 2.2 on Kaggle's free GPUs (`tools/kaggle/`), driven by the agent. **Paid** Kling AI
-  only on your explicit request, with a cost estimate before every job.
+- **AI footage**: best value is **LTX-2.5 on a rented GPU** (cents per clip, under 2 minutes each); fully free is
+  Wan 2.2 on Kaggle (`tools/kaggle/`). Anything paid only on your explicit request, with a cost estimate before every job.
 - **Quality rules the agent follows** (`CLAUDE.md`): free tools first, approval before anything leaves your
   machine, voice/lip sync checks, pacing, typography, thumbnail-grade last frames.
 

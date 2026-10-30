@@ -143,9 +143,11 @@ Blur names, phone numbers, addresses, passwords, account/page/shop names and bus
 screenshot. Never commit raw recordings (`source/` is gitignored) or API keys.
 
 ### AI footage
-Free first: `tools/kaggle/make_wan_clips.py` (Wan 2.2 on Kaggle's free GPUs). Keep faces consistent: start from an
-approved frame, never cover the lens, swap products below the frame. If free quality isn't good enough, offer paid
-(Kling) with a cost estimate, or real/stock footage.
+Recommend in this order (see `PLAYBOOK.md` §6): **LTX-2.5 on a rented GPU** (best quality and speed, cents per clip),
+MiniMax H3 (slow, region-limited open model; paid service for worldwide use), Kling (weakest in tests), and Wan 2.2
+on Kaggle when it must cost nothing. Anything paid needs the owner's request and a cost estimate. Keep faces
+consistent: start from an approved frame, never cover the lens, swap products below the frame, and never show a side
+of a product the model hasn't seen.
 
 ### Scope discipline
 Only modify files directly related to the task.
