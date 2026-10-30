@@ -112,6 +112,11 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
 - **Transitions between AI clips:** never cross-fade the same person (the old product ghosts through) and avoid
   hard cuts (look unnatural). Hide the change behind an on-screen element — e.g. the next product card sweeps
   across the frame, the camera changes behind it, then the card settles into its slot.
+- **Rented GPUs (e.g. Runpod):** require a host driver of **CUDA 12.8 or newer** when renting (newer PyTorch builds
+  can't use older drivers and silently fall back to the CPU), and make the job **check the GPU works before
+  downloading any model** (`torch.cuda.is_available()`), stopping at once if not. Check the model's real size and
+  memory needs first (big models need ~1.5× their weights in system RAM when offloading). Set a hard time limit,
+  delete the machine as soon as the clip is downloaded, and confirm spend is back to $0/hour.
 - **Paid tools:** typical cost to expect, e.g. ~10 credits per second at 1080p on a turbo model; confirm before
   every job, report the real cost after.
 - Frame-by-frame review: identity (face crops side by side), hands, product shape/colour/size, background, swaps
