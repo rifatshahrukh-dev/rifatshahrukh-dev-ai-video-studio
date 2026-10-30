@@ -8,7 +8,8 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
 
 ## 1. How the agent works with you
 
-1. **Understand before making.** Ask what the video is for, who watches it, where it's posted, the language, and
+1. **Understand before making.** Ask what the video is for, who watches it, where it's posted, the language (always
+   ask before generating voice or rendering, unless the owner already said), and
    what the viewer should do after. Read the brand guide.
 2. **Plan out loud.** Propose the structure (scenes or steps, rough timings, what's on screen, what's said) and the
    tools (free first). Agree before spending time or money.
