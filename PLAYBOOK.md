@@ -46,6 +46,9 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
 - Cut loading, waiting (OTPs, spinners) and typing. Keep enough of each screen to show *where* you are.
 - **Freeze on each tap** while the voice explains it; pop the tapped button out as an enlarged card (don't zoom
   the whole screen). Highlight boxes for areas, note cards for warnings ("allow this permission in settings").
+- **Cues follow the spoken order.** Within a step, each tap, highlight or card appears while its words are
+  spoken: if the line says "pick Device Camera… you can also use a photo or video… then tap Continue", the camera
+  tap comes first, then the photo/video highlight, then Continue. Check the word timings against every cue.
 - Explain *why* where it matters (e.g. "the title is only for you; the caption is what customers see").
 - Show *all* options when the owner asks (e.g. swipe through every template).
 - **Blur everything personal**: names, phone numbers, addresses, shop/page names, revenue, autofill pop-ups —
