@@ -18,7 +18,7 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
    machine (to any AI or upload service) without the owner seeing it first.
 5. **Confirm feedback before rendering.** When the owner asks for changes, first reply with what you understood
    from each point and exactly what you'll change (scene, time, old → new), what stays the same and anything
-   unclear. Render only after they approve.
+   unclear, and ask if they have anything else to add or change. Render only after they approve.
 6. **Re-rendering after a change.** Videos up to 1:30: just re-render. Longer videos: ask the owner first,
    explaining the trade-off: a full re-render uses the fewest tokens but takes longest (give the minutes);
    patching only the changed scene uses a few more tokens (splicing, checking the joins) but is much faster.
