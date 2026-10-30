@@ -32,6 +32,47 @@ editor**:
 All of this know-how is written down in **[`PLAYBOOK.md`](PLAYBOOK.md)** (the craft) and **[`CLAUDE.md`](CLAUDE.md)**
 (the non-negotiable rules), learned from real production feedback.
 
+## Free by default: built to not spend your money
+
+The kit is designed to run on **free tools wherever possible**. A normal laptop is enough: rendering needs no GPU,
+and everything below costs nothing.
+
+| Job | Free option the kit uses |
+|---|---|
+| Video rendering | HyperFrames + ffmpeg, on your own computer |
+| Voiceover | Google Gemini TTS (free tier), Kokoro (free, offline), Edge TTS |
+| Music | Generated in code (`tools/music/`), no licence needed |
+| Sound effects | Generated in code (`scripts/make_notify_sfx.py`) plus the included library |
+| Screenshot editing and blurring | Playwright + Pillow, on your own computer |
+| AI footage of people | Wan 2.2 on Kaggle's free GPUs (about 30 GPU hours a week) |
+| Stock footage | Pexels, Pixabay, Mixkit (free licences) |
+
+**Safeguards so the agent never spends without you knowing.** These are written into [`CLAUDE.md`](CLAUDE.md)
+as rules the agent must follow:
+- It **always looks for a free option first** and tells you what it found.
+- It **never uses a paid service, subscription or credits unless you ask for it** in that conversation.
+- Even then, it **confirms before every paid job** with the exact tool, settings and expected cost, and reports
+  the real cost afterwards. An earlier "yes" never covers a new job.
+- It **shows you every photo or video before uploading it anywhere**, paid or free.
+- Your API keys stay in a git-ignored file or your cloud environment's secrets, never in the chat or the repo.
+
+### When paid tools give better results (optional)
+
+Free tools cover most videos well. For some jobs, a paid service is noticeably better. The kit supports these
+**only when you ask for them**, for example:
+
+| Paid option | Better for | Instead of the free… |
+|---|---|---|
+| **Kling AI** (credits; e.g. ~10 credits per second of 1080p on a turbo model) | Realistic AI presenters and product shots that don't look AI-made | Wan 2.2 on Kaggle, which can look artificial |
+| **ElevenLabs** | Premium voices, cloning your own voice | Gemini / Kokoro voices |
+| **Gemini API paid tier** | Higher daily limits for long or many videos | Gemini free tier |
+| **Google Veo, Runway** | Cinematic AI video clips | Wan 2.2 |
+| **HeyGen avatars** | Talking presenters with real lip sync | Music and captions over AI footage (no lip sync) |
+| **Paid stock or music libraries** (e.g. Storyblocks, Artlist, Epidemic Sound) | Real filmed footage and produced music tracks | Free stock sites and code-generated music |
+| **Cloud GPUs** (e.g. RunPod) | Faster, higher-resolution free models, no weekly limit | Kaggle's free GPUs |
+
+Real footage filmed on a phone is still the best free upgrade of all: the agent can give you a shot list.
+
 ## Get started (the easy way)
 
 Open this repo in **[Claude Code](https://claude.ai/code)** (desktop app, terminal or claude.ai/code) and paste:
