@@ -1,7 +1,25 @@
-MIT License
+AI Video Studio is made of two parts, under two licences:
 
-Copyright (c) Cole Medin (original hyperframes-ai-video-generation)
-Copyright (c) contributors to AI Video Studio (extensions)
+  PART A  The original project "hyperframes-ai-video-generation" by Cole Medin
+          (https://github.com/coleam00/hyperframes-ai-video-generation), up to and
+          including its commit 5900f01. Licensed under the MIT License (below).
+
+  PART B  Everything added or changed in AI Video Studio after that commit
+          ("the Additions"), for example PLAYBOOK.md, SETUP.md, AGENTS.md, brand/,
+          tools/, the Gemini TTS and sound-effect scripts and the changes to
+          README.md and CLAUDE.md. Licensed under the AI Video Studio Community
+          License (below).
+
+Where a file contains both, Part A covers the original material and Part B covers
+the Additions. Third-party components keep their own licences (for example
+HyperFrames, GSAP, Kokoro, Noto fonts under the SIL Open Font License, and any
+model or service you connect).
+
+================================================================================
+PART A - MIT License
+================================================================================
+
+Copyright (c) Cole Medin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,3 +38,99 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+================================================================================
+PART B - AI Video Studio Community License, version 1.0
+================================================================================
+
+Copyright (c) rifatshahrukh-dev (https://github.com/rifatshahrukh-dev)
+("the Author"). All rights not expressly granted below are reserved.
+
+A note from the Author, in plain words: I built AI Video Studio so that anyone
+can make good videos without a big budget. Use it, learn from it, test it and
+improve it - for free. If it helps you earn money, I only ask two things: tell
+me, and share 10% of the profit it helps you make. That keeps the project alive
+and lets me keep improving it for everyone. The binding terms are below.
+
+1. DEFINITIONS
+
+   "Software" means the Additions described in Part B, in source or any other
+   form, including the documentation, prompts, rules and know-how written in
+   them, and any work that copies, adapts or is derived from them.
+
+   "Commercial Use" means any use of the Software, or of videos or other output
+   made with it, that is intended for or results in money or other commercial
+   advantage. This includes: selling or licensing videos made with the Software;
+   offering video production or a paid service, product or app that uses the
+   Software; and using videos made with the Software to advertise or promote a
+   business, product or service.
+
+   "Non-Commercial Use" means personal use, learning, teaching, research,
+   testing and evaluation, and use by registered non-profit organisations for
+   their non-profit work, where nobody earns money from the use or its output.
+
+   "Net Profit" means the revenue you receive that is attributable to your
+   Commercial Use, minus the direct costs of earning that revenue (for example
+   paid AI services, footage, advertising spend and payment fees), calculated
+   in good faith. Where revenue cannot be directly attributed (for example
+   general business promotion), you and the Author will agree a fair estimate
+   in good faith.
+
+2. FREE NON-COMMERCIAL USE
+
+   Subject to these terms, the Author grants you a worldwide, royalty-free,
+   non-exclusive licence to use, copy, modify and share the Software for
+   Non-Commercial Use.
+
+3. COMMERCIAL USE
+
+   You may make Commercial Use of the Software on these conditions:
+
+   a) Notice. Within 30 days of your first Commercial Use, notify the Author by
+      opening an issue titled "Commercial use" in the AI Video Studio GitHub
+      repository, or by any other means that reliably reaches the Author
+      through https://github.com/rifatshahrukh-dev. Include your name or
+      company name and a short description of the use. You may ask for any
+      private details to be exchanged by email or another private channel.
+
+   b) Profit share. Pay the Author 10% (ten percent) of your Net Profit from
+      Commercial Use, at least once every 12 months, together with a short
+      statement of how it was calculated. The Author may ask for reasonable
+      supporting information.
+
+   c) Other arrangements. The Author and you may agree different terms (for
+      example a fixed fee, a different percentage, or a waiver) in writing,
+      including by email. A written agreement replaces 3(b) for the use it
+      covers.
+
+   If the Net Profit for a 12-month period is zero or negative, nothing is
+   owed for that period, but the notice in 3(a) is still required.
+
+4. ATTRIBUTION
+
+   Keep this LICENSE file and the credits in README.md in every copy or
+   substantial portion of the Software you share.
+
+5. TERMINATION
+
+   If you break these terms, your licence under Part B ends automatically. It
+   is restored if you fix the breach (including any unpaid amounts) within 30
+   days of becoming aware of it. Part A (MIT) is not affected.
+
+6. NO WARRANTY AND LIMITATION OF LIABILITY
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+   ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. You are
+   responsible for the content you create, for having the rights to any
+   material you put in, and for following the terms of any service you use
+   with the Software.
+
+7. GENERAL
+
+   If any part of these terms is found unenforceable, the rest stays in effect
+   and that part is applied to the greatest extent allowed. These terms apply
+   wherever in the world the Software is used.

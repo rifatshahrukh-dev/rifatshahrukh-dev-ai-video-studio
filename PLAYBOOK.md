@@ -18,7 +18,6 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
    machine (to any AI or upload service) without the owner seeing it first.
 5. **Review like a director.** After rendering, check frames at every key moment, the audio edges and the sync,
    and say what was checked. Point out flaws yourself before the owner has to.
-6. **Write the post too.** Offer captions for each platform (see §8).
 
 ## 2. Universal craft rules
 
@@ -110,17 +109,7 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
   than letting it run over a closed mouth.
 - Check the final render: frames at each voice line's start and end, clip edges, overall loudness.
 
-## 8. Writing the post
-
-- **LinkedIn:** only the first 2–3 lines show before "…see more" — put the key message or ask there. Founders:
-  first-person, humble, no hard sell ("Proud of the journey… beginning our pre-seed raise"). Add the link
-  (store/site) and 4–8 hashtags.
-- **Instagram/Facebook Reels:** short hook line, 2–4 benefit lines with emojis, download link, playlist/tutorial
-  link, hashtags; a shorter version for Stories.
-- **YouTube:** clear title with the keyword, description with steps/timestamps and links.
-- Never invent statistics; ask the owner for any number.
-
-## 9. Final checklist before sending a video
+## 8. Final checklist before sending a video
 
 - [ ] Hook in 2 s; brand named in line 1; ends on a still branded frame
 - [ ] Same product/price/code everywhere; right screen for each narration line

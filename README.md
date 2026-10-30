@@ -27,7 +27,6 @@ editor**:
 - **Reviews its own work** frame by frame against a quality checklist (sync, blur, consistency, pacing, sound)
   and tells you what it checked and what it compromised on.
 - **Takes feedback and fixes it**, and asks before anything costs money or leaves your machine.
-- **Writes the post** for each platform (LinkedIn, Instagram, YouTube), knowing what shows before "see more".
 
 All of this know-how is written down in **[`PLAYBOOK.md`](PLAYBOOK.md)** (the craft) and **[`CLAUDE.md`](CLAUDE.md)**
 (the non-negotiable rules), learned from real production feedback.
@@ -129,5 +128,20 @@ shared/audio/sfx/ sound effects
 videos/<slug>/    one folder per video (gitignored by default)
 ```
 
-## License
-MIT. Original work © Cole Medin; extensions © their contributors.
+## License: free to use, fair to share
+
+AI Video Studio is **free for personal use, learning, testing and non-profit work**. Go ahead: try it, break it,
+improve it, share it.
+
+**Using it to make money?** That's great, and it's allowed. I just ask two things:
+1. **Let me know** within 30 days: open an issue titled **"Commercial use"** in this repo, or reach me through my
+   GitHub profile, [@rifatshahrukh-dev](https://github.com/rifatshahrukh-dev).
+2. **Share 10% of the profit** it helps you make, once a year. If that doesn't fit your case, get in touch and we'll
+   agree something fair.
+
+That's what keeps this project alive and improving for everyone. "Making money" includes selling videos made with
+it, offering it as a paid service, and using its videos to promote a business. The exact terms are in
+[`LICENSE`](LICENSE).
+
+The original project by **Cole Medin** stays under the **MIT License**, as he published it; the terms above cover
+the AI Video Studio additions. Third-party tools and models keep their own licences.

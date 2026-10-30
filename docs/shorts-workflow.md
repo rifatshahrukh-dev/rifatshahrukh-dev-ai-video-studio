@@ -453,4 +453,4 @@ Forked from [coleam00/hyperframes-ai-video-generation](https://github.com/coleam
 
 ## License
 
-MIT
+MIT (the original project by Cole Medin). See [`LICENSE`](../LICENSE) for how this applies inside AI Video Studio.
