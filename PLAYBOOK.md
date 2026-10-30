@@ -43,6 +43,10 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
 - **Consistency:** the same product, price and code everywhere it appears — app screenshots, product cards, AI
   footage and captions must all show the same item. If the footage shows a kameez, the app screens show the
   kameez, not the demo item that happened to be in the recording.
+- **Professional look, always.** Pop-ups and labels look like real app/system UI: clean cards, soft shadows, a bold
+  title with a smaller grey line, icons drawn in CSS/SVG. No emoji in headlines, labels or system pop-ups (customer
+  comments may use them). Nothing covers other text; dim busy backgrounds behind a key card. Gentle motion
+  (rise/fade) and soft sounds, not big scale slams or impact hits.
 - **Real UI, recreated faithfully.** When showing a social post, comments must look like they're *on that post*
   (post header, photo, caption, reactions, then the comment sheet) — not a floating list.
 - **Show the right screen for the words.** If the narration says "the app", show the app's home screen, not an
