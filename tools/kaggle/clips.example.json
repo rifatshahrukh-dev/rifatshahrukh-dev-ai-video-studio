@@ -1,0 +1,12 @@
+{
+ "_comment": "Two chains, one per T4 GPU. Replace example-start.jpg with an approved photo of your presenter (9:16).",
+ "images": ["example-start.jpg"],
+ "prompts": {
+  "A-talk": "The young woman holds up the product toward the camera and talks warmly about it, her mouth moving naturally, friendly eye contact. Vertical smartphone front-camera video, locked-off tripod shot, no camera movement, no zoom, deep focus with her face always in sharp focus, photorealistic, consistent lighting, same woman and room throughout.",
+  "B-swap": "The young woman lowers the product straight down until it and her hand go below the bottom edge of the frame, then lifts the next product up from below and holds it beside her at chest height, smiling. She stays at the same distance from the camera; nothing comes close to the lens or covers her face. Locked-off tripod shot, photorealistic."
+ },
+ "chains": [
+  {"seed": 11, "steps": [["A-talk", "example-start.jpg"], ["B-swap", "prev"]]},
+  {"seed": 22, "steps": [["A-talk", "example-start.jpg"], ["B-swap", "prev"]]}
+ ]
+}

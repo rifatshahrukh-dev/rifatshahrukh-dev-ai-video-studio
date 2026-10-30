@@ -1,0 +1,22 @@
+{
+ "_comment": "Example tutorial spec. Times are recording seconds; coordinates are in 1080x2400 recording pixels (any phone recording is scaled to that first). See tools/tutorial/README.md.",
+ "slug": "example-sign-up",
+ "title": "Sign up in *one minute*",
+ "subtitle": "Create your account",
+ "source": "source/sign-up.mp4",
+ "voice": "Sulafat",
+ "blurs": [
+  {"t": [4.0, 9.5], "box": [100, 900, 880, 120], "why": "phone number"}
+ ],
+ "steps": [
+  {"kind": "intro", "vo": "Let's see how to sign up for YourBrand in under a minute."},
+  {"title": "Open sign up", "vo": "Open the app and tap Sign Up at the bottom.",
+   "ranges": [[1.0, 3.2]],
+   "taps": [{"t": 3.0, "x": 540, "y": 1928, "label": "Sign Up", "box": [60, 1880, 960, 100]}]},
+  {"title": "Verify your number", "vo": "Type your phone number and tap Verify. You'll get a code by SMS.",
+   "ranges": [[3.4, 5.0], [9.0, 10.5]],
+   "taps": [{"t": 10.2, "x": 540, "y": 1014, "label": "Verify", "box": [380, 950, 320, 130]}],
+   "note": {"icon": "🔐", "text": "Never share this code with anyone", "pos": "bottom", "at": 0.6}},
+  {"kind": "outro", "title": "You're *ready!*", "vo": "That's it! Start using YourBrand today."}
+ ]
+}

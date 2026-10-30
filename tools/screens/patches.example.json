@@ -1,0 +1,12 @@
+{
+ "_comment": "Swap the product shown in an app screenshot. Coordinates are screenshot pixels; measure them on a grid overlay.",
+ "out_dir": "edited",
+ "screens": [
+  {"src": "your-screenshot.png", "out": "your-screenshot-edited.jpg",
+   "blur": [[40, 300, 480, 70]],
+   "patches": [
+     {"box": [530, 505, 520, 72], "sample": [1000, 540], "html": "New Product Name", "css": "color:#3a3a3a;font:400 44px/72px sans-serif"},
+     {"box": [232, 1930, 148, 198], "sample": null, "html": "", "css": "background:url(product.png) center/cover;border-radius:12px"}
+   ]}
+ ]
+}

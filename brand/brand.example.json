@@ -1,0 +1,33 @@
+{
+  "_comment": "Copy to brand/brand.json and fill in. Only 'name' is mandatory; everything else has a sensible default.",
+  "name": "YourBrand",
+  "language": "en",
+  "logo_horizontal": "logos/logo-horizontal.png",
+  "logo_stacked": "logos/logo-stacked.png",
+  "colors": {
+    "primary": "#1546A0",
+    "accent": "#E0262F",
+    "accent2": "#F26A2E",
+    "dark": "#0F1630",
+    "light": "#FFF6F1"
+  },
+  "font": "Noto Sans Bengali (ships in brand/fonts; covers Latin too) - replace with your own .woff2 files if you like",
+  "voice": {
+    "engine": "gemini",
+    "name": "Sulafat",
+    "style": "warm, friendly, natural, normal conversational pace"
+  },
+  "guide_pill": "Step-by-step guide",
+  "steps_chip": "{n} easy steps",
+  "cta": "Try YourBrand today",
+  "store": "google_play",
+  "store_url": "https://play.google.com/store/apps/details?id=com.example.app",
+  "website": "https://example.com",
+  "music": {
+    "tutorials": "soft bed, low under the voice",
+    "ads": "upbeat / funky",
+    "pitch": "calm corporate"
+  },
+  "popup_sounds": true,
+  "step_word": "Step"
+}

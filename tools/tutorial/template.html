@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<title>{{PAGE_TITLE}} — {{BRAND}} tutorial</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  @font-face { font-family: 'Noto Sans Bengali'; font-weight: 500; font-display: block; src: url(assets/fonts/noto-sans-bengali-bengali-500-normal.woff2) format('woff2'); unicode-range: U+0951-0952,U+0964-0965,U+0980-09FE,U+1CD0-1CF7,U+200C-200D,U+20B9,U+25CC,U+A8F1; }
+  @font-face { font-family: 'Noto Sans Bengali'; font-weight: 700; font-display: block; src: url(assets/fonts/noto-sans-bengali-bengali-700-normal.woff2) format('woff2'); unicode-range: U+0951-0952,U+0964-0965,U+0980-09FE,U+1CD0-1CF7,U+200C-200D,U+20B9,U+25CC,U+A8F1; }
+  @font-face { font-family: 'Noto Sans Bengali'; font-weight: 800; font-display: block; src: url(assets/fonts/noto-sans-bengali-bengali-800-normal.woff2) format('woff2'); unicode-range: U+0951-0952,U+0964-0965,U+0980-09FE,U+1CD0-1CF7,U+200C-200D,U+20B9,U+25CC,U+A8F1; }
+  @font-face { font-family: 'Noto Sans Bengali'; font-weight: 500; font-display: block; src: url(assets/fonts/noto-sans-bengali-latin-500-normal.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2010-206F,U+20AC,U+2122,U+2212; }
+  @font-face { font-family: 'Noto Sans Bengali'; font-weight: 700; font-display: block; src: url(assets/fonts/noto-sans-bengali-latin-700-normal.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2010-206F,U+20AC,U+2122,U+2212; }
+  @font-face { font-family: 'Noto Sans Bengali'; font-weight: 800; font-display: block; src: url(assets/fonts/noto-sans-bengali-latin-800-normal.woff2) format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2010-206F,U+20AC,U+2122,U+2212; }
+  @font-face { font-family: 'Noto Color Emoji'; src: local('Noto Color Emoji'); }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #FFF6F1;
+    font-family: 'Noto Sans Bengali', 'Noto Color Emoji', sans-serif; -webkit-font-smoothing: antialiased; }
+  #root { --blue: #1546A0; --red: #E0262F; --orange: #F26A2E; --char: #2D2F3A;
+    --grad: linear-gradient(100deg, #1546A0 0%, #E0262F 55%, #F26A2E 100%);
+    position: relative; width: 1080px; height: 1920px; overflow: hidden; color: var(--char); }
+
+  /* background */
+  #bg { position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 35%, #FFFFFF 0%, #FFF1EA 75%); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(150px); }
+  #b1 { width: 760px; height: 760px; left: -330px; top: 260px; background: #1546A0; opacity: .16; }
+  #b2 { width: 760px; height: 760px; right: -330px; top: 980px; background: #F26A2E; opacity: .22; }
+  #b3 { width: 560px; height: 560px; left: 260px; top: -320px; background: #E0262F; opacity: .10; }
+
+  /* header */
+  #logo { position: absolute; left: 56px; top: 44px; height: 58px; width: auto; }
+  #guide-pill { position: absolute; right: 56px; top: 50px; padding: 8px 26px 10px; border-radius: 999px;
+    background: var(--char); color: #fff; font-size: 30px; font-weight: 700; white-space: nowrap; }
+  #progress { position: absolute; left: 56px; right: 56px; top: 128px; height: 8px; display: flex; gap: 8px; }
+  .pseg { flex: 1; border-radius: 4px; background: rgba(45, 47, 58, .12); overflow: hidden; }
+  .pfill { width: 100%; height: 100%; background: var(--grad); transform-origin: 0 50%; transform: scaleX(0); }
+  .stephead { position: absolute; left: 56px; right: 56px; top: 150px; height: 112px;
+    display: flex; align-items: center; justify-content: center; gap: 22px; opacity: 0; }
+  .stephead .badge { flex: 0 0 auto; height: 88px; min-width: 88px; padding: 0 26px; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--grad); color: #fff; font-size: 40px; font-weight: 800; white-space: nowrap;
+    box-shadow: 0 10px 26px rgba(224, 38, 47, .28); }
+  .stephead .ttl { font-size: 54px; font-weight: 800; line-height: 1.12; color: var(--char); }
+
+  /* phone */
+  #phone-wrap { position: absolute; left: 216px; top: 282px; width: 648px; height: 1406px; perspective: 1800px; }
+  #phone { position: absolute; inset: 0; padding: 14px; border-radius: 56px;
+    background: linear-gradient(145deg, #2B2C33, #0B0B0E);
+    box-shadow: 0 0 0 2px #3A3B44, 0 40px 80px rgba(20, 22, 40, .32), 0 14px 26px rgba(20, 22, 40, .18); }
+  #screen { position: relative; width: 620px; height: 1378px; border-radius: 42px; overflow: hidden; background: #000; }
+  #zoomer { position: absolute; left: 0; top: 0; width: 620px; height: 1378px; transform-origin: 0 0; }
+  #screen video { position: absolute; left: 0; top: 0; width: 620px; height: 1378px; object-fit: cover; }
+  #punch { position: absolute; top: 34px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%;
+    background: #050507; box-shadow: 0 0 0 3px rgba(255,255,255,.08); z-index: 5; }
+  #overlay { position: absolute; inset: 0; }
+  .ring { position: absolute; border-radius: 999px; border: 5px solid #F26A2E; opacity: 0;
+    box-shadow: 0 0 0 8px rgba(242,106,46,.22), 0 0 30px rgba(242,106,46,.55); }
+  .ripple { position: absolute; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%;
+    background: rgba(242,106,46,.35); border: 5px solid #F26A2E; opacity: 0; }
+  .hbox { position: absolute; border-radius: 22px; border: 5px solid #F26A2E; opacity: 0;
+    box-shadow: 0 0 0 9999px rgba(15, 18, 35, .28), 0 0 26px rgba(242,106,46,.6); }
+  .plabel { position: absolute; transform: translateX(-50%); padding: 8px 22px 10px; border-radius: 999px; white-space: nowrap;
+    background: var(--grad); color: #fff; font-size: 28px; font-weight: 800; opacity: 0;
+    box-shadow: 0 8px 20px rgba(20,22,40,.35); }
+
+  /* pop-out button cards */
+  .pop { position: absolute; border-radius: 22px; overflow: visible; opacity: 0; z-index: 40;
+    box-shadow: 0 0 0 5px #fff, 0 0 0 10px rgba(242,106,46,.85), 0 26px 50px rgba(20,22,40,.38); }
+  .pop img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 22px; display: block; }
+  .pop .prip { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%;
+    background: rgba(242,106,46,.35); border: 5px solid #F26A2E; opacity: 0; }
+  .pop .plab { position: absolute; left: 50%; top: -64px; transform: translateX(-50%); padding: 6px 24px 9px; border-radius: 999px;
+    white-space: nowrap; background: var(--grad); color: #fff; font-size: 32px; font-weight: 800; box-shadow: 0 8px 20px rgba(20,22,40,.3); }
+
+  /* notes */
+  .note { position: absolute; left: 70px; right: 70px; padding: 22px 28px 24px; border-radius: 28px; opacity: 0;
+    display: flex; gap: 18px; align-items: flex-start; background: rgba(255,255,255,.97); color: var(--char);
+    box-shadow: 0 18px 40px rgba(20,22,40,.28); border-left: 10px solid #1546A0; }
+  .note.warn { border-left-color: #E0262F; }
+  .note.safe { border-left-color: #1F9D55; }
+  .note .ic { font-size: 44px; line-height: 1.1; }
+  .note .tx { font-size: 34px; font-weight: 700; line-height: 1.35; }
+  .note.top { top: 330px; } .note.bottom { top: 1330px; } .note.mid { top: 820px; }
+
+  /* captions */
+  #captions { position: absolute; left: 46px; right: 46px; top: 1712px; height: 180px; }
+  .cap { position: absolute; left: 0; right: 0; top: 0; margin: 0 auto; width: max-content; max-width: 988px;
+    padding: 10px 32px 14px; border-radius: 26px; background: rgba(32, 34, 46, .92); color: #fff;
+    font-size: 46px; font-weight: 700; line-height: 1.36; text-align: center; opacity: 0; }
+
+  /* intro / outro cards */
+  .card { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 34px; padding: 0 80px 120px; text-align: center; opacity: 0; }
+  .card .big-logo { width: 300px; height: auto; }
+  .card .h1 { font-size: 84px; font-weight: 800; line-height: 1.15; }
+  .card .h1 .g { white-space: nowrap; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .card .sub { font-size: 44px; font-weight: 700; color: #555867; }
+  .card .chip { padding: 14px 36px 18px; border-radius: 999px; background: var(--char); color: #fff; font-size: 38px; font-weight: 800; }
+  .card .cta { padding: 24px 46px 28px; border-radius: 999px; background: var(--grad); color: #fff; font-size: 48px; font-weight: 800;
+    box-shadow: 0 18px 40px rgba(224,38,47,.3); }
+  .card .play { display: flex; align-items: center; gap: 18px; padding: 14px 32px 16px 24px; border-radius: 18px; background: #111216; color: #fff; }
+  .card .play .tri { width: 0; height: 0; border-top: 24px solid transparent; border-bottom: 24px solid transparent; border-left: 40px solid #fff; }
+  .card .play .t1 { font-size: 22px; font-weight: 700; letter-spacing: .08em; opacity: .85; text-align: left; }
+  .card .play .t2 { font-size: 38px; font-weight: 800; line-height: 1.1; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="{{TOTAL}}" data-width="1080" data-height="1920">
+  <div id="bg" data-layout-ignore><div class="blob" id="b1"></div><div class="blob" id="b2"></div><div class="blob" id="b3"></div></div>
+
+  <img id="logo" src="assets/logo-horizontal.png" alt="{{BRAND}}" />
+  <div id="guide-pill">{{GUIDE_PILL}}</div>
+  <div id="progress"></div>
+  <div id="heads"></div>
+
+  <div id="phone-wrap">
+    <div id="phone">
+      <div id="screen">
+        <div id="zoomer">
+          <video id="screenvid" class="clip" src="assets/screen.mp4" data-start="{{SCREEN_START}}" data-duration="{{SCREEN_DUR}}" data-track-index="5" muted playsinline></video>
+          <div id="overlay"></div>
+        </div>
+      </div>
+      <div id="punch"></div>
+    </div>
+  </div>
+
+  <div id="pops"></div>
+  <div id="notes"></div>
+
+  <div class="card" id="intro">
+    <img class="big-logo" src="assets/logo-stacked.png" alt="{{BRAND}}" />
+    <div class="h1" id="intro-title"></div>
+    <div class="sub" id="intro-sub"></div>
+    <div class="chip" id="intro-chip"></div>
+  </div>
+  <div class="card" id="outro">
+    <img class="big-logo" src="assets/logo-stacked.png" alt="{{BRAND}}" />
+    <div class="h1" id="outro-title"></div>
+    <div class="cta">{{CTA}}</div>
+    {{STORE_BADGE}}
+  </div>
+
+  <div id="captions"></div>
+
+  <audio id="narration" class="clip" src="audio/narration.wav" data-start="0" data-duration="{{TOTAL}}" data-track-index="2" data-volume="1"></audio>
+  <audio id="music" class="clip" src="audio/music.mp3" data-start="0" data-duration="{{TOTAL}}" data-track-index="3" data-volume="0.08"></audio>
+  <audio id="sfx" class="clip" src="audio/sfx.wav" data-start="0" data-duration="{{TOTAL}}" data-track-index="4" data-volume="0.22"></audio>
+</div>
+
+<script>
+// Generated by build_tutorial.py — edit the spec, not this block.
+const D = {{DATA}};
+
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+const K = 620 / 1080;                       // recording px -> phone screen px
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+// ── backgrounds drift
+tl.to("#b1", { x: 140, y: 90, duration: D.total / 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+tl.to("#b2", { x: -150, y: -110, duration: D.total / 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+// ── intro / outro cards
+const intro = D.steps.find((s) => s.kind === "intro");
+const outro = D.steps.find((s) => s.kind === "outro");
+$("intro-title").innerHTML = D.title.replace(/\*(.+?)\*/g, '<span class="g">$1</span>');
+$("intro-sub").textContent = D.subtitle;
+$("intro-chip").textContent = D.stepsChip.replace("{n}", D.nsteps);
+gsap.set(["#guide-pill", "#progress", "#phone-wrap", "#outro"], { opacity: 0 });
+if (intro) {
+  gsap.set("#intro", { opacity: 1 });
+  tl.from("#intro .big-logo", { scale: 0.6, opacity: 0, duration: 0.6, ease: "back.out(1.7)" }, 0.1);
+  tl.from("#intro-title", { y: 40, opacity: 0, duration: 0.5, ease: "power3.out" }, 0.35);
+  tl.from("#intro-sub", { y: 30, opacity: 0, duration: 0.45, ease: "power2.out" }, 0.6);
+  tl.from("#intro-chip", { scale: 0.7, opacity: 0, duration: 0.4, ease: "back.out(2)" }, 0.85);
+  tl.to("#intro", { opacity: 0, y: -60, duration: 0.4, ease: "power2.in" }, intro.end - 0.35);
+}
+const s0 = D.screen.start;
+tl.fromTo(["#guide-pill", "#progress"], { opacity: 0 }, { opacity: 1, duration: 0.4, immediateRender: false }, s0 - 0.2);
+tl.fromTo("#phone-wrap", { opacity: 0, y: 260, rotationX: 10 }, { opacity: 1, y: 0, rotationX: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, s0 - 0.3);
+
+// ── step headers + progress (one per numbered step; sub-steps share it)
+const groups = [];
+D.steps.filter((s) => s.kind === "screen").forEach((s) => {
+  const g = groups[groups.length - 1];
+  if (g && g.group === s.group) g.end = s.end; else groups.push({ group: s.group, num: s.num, title: s.title, start: s.start, end: s.end });
+});
+groups.forEach((s, i) => {
+  const seg = el("div", "pseg"); const fill = el("div", "pfill"); seg.appendChild(fill); $("progress").appendChild(seg);
+  tl.to(fill, { scaleX: 1, duration: s.end - s.start, ease: "none" }, s.start);
+  const h = el("div", "stephead", `<div class="badge">${D.stepWord} ${s.num}</div><div class="ttl">${s.title}</div>`);
+  h.id = "head" + i; $("heads").appendChild(h);
+  tl.fromTo(h, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, s.start + 0.02);
+  tl.fromTo(h.querySelector(".badge"), { scale: 0.5 }, { scale: 1, duration: 0.4, ease: "back.out(2.2)", immediateRender: false }, s.start + 0.05);
+  tl.to(h, { opacity: 0, y: -20, duration: 0.22, ease: "power1.in" }, s.end - 0.22);
+});
+
+// ── taps: ring on the real button while frozen; the button "pops out" as an enlarged card,
+//    gets pressed, then shrinks back into place; ripple on the real button at the tap.
+const SX = 216 + 14, SY = 282 + 14;          // phone screen origin on the canvas
+D.taps.forEach((tp, i) => {
+  const x = tp.x * K, y = tp.y * K;
+  const ring = el("div", "ring"); ring.style.cssText = `left:${x - 58}px;top:${y - 58}px;width:116px;height:116px;`;
+  const rip = el("div", "ripple"); rip.style.cssText = `left:${x}px;top:${y}px;`;
+  $("overlay").append(ring, rip);
+  const lead = Math.max(0.3, tp.t - tp.ring);
+  tl.fromTo(ring, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)", immediateRender: false }, tp.ring);
+  const pulses = Math.max(0, Math.floor((lead - 0.35) / 0.5));
+  if (pulses) tl.to(ring, { scale: 1.12, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: pulses * 2 - 1 }, tp.ring + 0.3);
+  tl.to(ring, { opacity: 0, duration: 0.15 }, tp.t + 0.05);
+  tl.fromTo(rip, { scale: 0.3, opacity: 1 }, { scale: 1.5, opacity: 0, duration: 0.5, ease: "power2.out", immediateRender: false }, tp.t);
+
+  if (tp.pop) {
+    const [bx, by, bw, bh] = tp.box;
+    const P = Math.min(1.9, 900 / (bw * K), 380 / (bh * K));
+    const cw = bw * K * P, ch = bh * K * P;
+    const tx = SX + (bx + bw / 2) * K, ty = SY + (by + bh / 2) * K;     // button centre on canvas
+    let cy = ty - (bh * K) / 2 - 70 - ch / 2;
+    if (cy - ch / 2 < 290) cy = ty + (bh * K) / 2 + 70 + ch / 2;
+    if (cy + ch / 2 > 1690) cy = Math.max(290 + ch / 2, ty - ch / 2 - 40);
+    const cx = Math.min(Math.max(tx, cw / 2 + 34), 1080 - cw / 2 - 34);
+    const card = el("div", "pop", `<img src="${tp.pop}" alt="" /><div class="prip"></div>` + (tp.label ? `<div class="plab">${tp.label}</div>` : ""));
+    card.style.cssText = `left:${cx - cw / 2}px;top:${cy - ch / 2}px;width:${cw}px;height:${ch}px;`;
+    card.querySelector(".prip").style.cssText = `left:${(tp.x - bx) * K * P}px;top:${(tp.y - by) * K * P}px;`;
+    $("pops").appendChild(card);
+    const dx = tx - cx, dy = ty - cy;
+    tl.fromTo(card, { x: dx, y: dy, scale: 1 / P, opacity: 0 },
+      { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.5)", immediateRender: false }, tp.ring + 0.08);
+    tl.to(card, { scale: 0.94, duration: 0.1, ease: "power2.in" }, tp.t - 0.1);
+    tl.to(card, { scale: 1, duration: 0.14, ease: "power2.out" }, tp.t);
+    tl.fromTo(card.querySelector(".prip"), { scale: 0.3, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.45, ease: "power2.out", immediateRender: false }, tp.t);
+    tl.to(card, { x: dx, y: dy, scale: 1 / P, opacity: 0, duration: 0.3, ease: "power2.in" }, tp.t + 0.3);
+  } else if (tp.label) {
+    const lb = el("div", "plabel", tp.label);
+    const ly = tp.lpos === "below" ? y + 66 : y - 118;
+    lb.style.cssText = `left:${Math.min(Math.max(x, 150), 470)}px;top:${ly}px;`;
+    $("overlay").appendChild(lb);
+    tl.fromTo(lb, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out", immediateRender: false }, tp.ring + 0.1);
+    tl.to(lb, { opacity: 0, duration: 0.2 }, Math.max(tp.t + 0.2, tp.ring + 0.4));
+  }
+});
+
+// ── highlight boxes (non-tap emphasis)
+D.highlights.forEach((h) => {
+  const [bx, by, bw, bh] = h.box.map((v) => v * K);
+  const b = el("div", "hbox"); b.style.cssText = `left:${bx}px;top:${by}px;width:${bw}px;height:${bh}px;`;
+  $("overlay").appendChild(b);
+  const hOut = Math.max(h.b - 0.2, h.a + 0.45);    // never fade out before the fade-in has finished
+  tl.fromTo(b, { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, h.a);
+  tl.to(b, { opacity: 0, duration: 0.2 }, hOut);
+  if (h.label) {
+    const lb = el("div", "plabel", h.label);
+    const ly = h.lpos === "below" ? by + bh + 14 : by - 62;
+    lb.style.cssText = `left:${Math.min(Math.max(bx + bw / 2, 150), 470)}px;top:${ly}px;`;
+    $("overlay").appendChild(lb);
+    tl.fromTo(lb, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out", immediateRender: false }, h.a + 0.1);
+    tl.to(lb, { opacity: 0, duration: 0.2 }, hOut);
+  }
+});
+
+// ── notes
+D.notes.forEach((n, i) => {
+  const c = el("div", `note ${n.tone} ${n.pos || "bottom"}`, `<div class="ic">${n.icon}</div><div class="tx">${n.text}</div>`);
+  $("notes").appendChild(c);
+  tl.fromTo(c, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.4)", immediateRender: false }, n.a);
+  tl.to(c, { opacity: 0, y: 20, duration: 0.25, ease: "power1.in" }, n.b - 0.25);
+});
+
+// ── outro
+if (outro) {
+  $("outro-title").innerHTML = outro.title.replace(/\*(.+?)\*/g, '<span class="g">$1</span>');
+  tl.to(["#phone-wrap", "#guide-pill", "#progress"], { opacity: 0, y: 40, duration: 0.35, ease: "power2.in" }, outro.start - 0.1);
+  tl.fromTo("#outro", { opacity: 0 }, { opacity: 1, duration: 0.3, immediateRender: false }, outro.start + 0.1);
+  tl.from("#outro .big-logo", { scale: 0.6, opacity: 0, duration: 0.5, ease: "back.out(1.7)", immediateRender: false }, outro.start + 0.15);
+  tl.from("#outro-title", { y: 40, opacity: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, outro.start + 0.3);
+  tl.from("#outro .cta", { scale: 0.7, opacity: 0, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, outro.start + 0.5);
+  tl.from("#outro .play", { y: 30, opacity: 0, duration: 0.35, ease: "power2.out", immediateRender: false }, outro.start + 0.65);
+}
+
+// ── captions (phrase groups, spoken word highlighted)
+(function captions() {
+  let n = 0;
+  D.captions.forEach((words, si) => {
+    const stepEnd = D.steps[si].end;
+    const groups = []; let cur = [];
+    words.forEach((w, k) => { cur.push(w); if (/[,।!?…]$/.test(w.w) || cur.length >= 5 || k === words.length - 1) { groups.push(cur); cur = []; } });
+    groups.forEach((g, gi) => {
+      const c = el("div", "cap", g.map((w, k) => `<span id="c${n}w${k}">${w.w}</span>`).join(" "));
+      c.id = "c" + n; $("captions").appendChild(c);
+      const on = g[0].s - 0.05;
+      const off = gi + 1 < groups.length ? groups[gi + 1][0].s - 0.05 : Math.min(g[g.length - 1].e + 0.5, stepEnd - 0.05);
+      tl.fromTo(c, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.12, immediateRender: false }, on);
+      tl.set(c, { opacity: 0 }, off);
+      g.forEach((w, k) => { tl.set(`#c${n}w${k}`, { color: "#FFB27A" }, w.s); if (k + 1 < g.length) tl.set(`#c${n}w${k}`, { color: "#FFFFFF" }, g[k + 1].s); });
+      n++;
+    });
+  });
+})();
+
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

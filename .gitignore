@@ -1,0 +1,58 @@
+# Secrets / env
+.env
+.env.local
+.env.*.local
+
+# Archon runtime artifacts — NEVER commit
+.archon/mcp/
+.archon/state/
+.archon/.env
+.archon/.env.*
+.archon/.run-logs/
+
+# Iteration backups — useful locally during tuning, never commit
+**/*.bak
+**/*.bak-*
+**/.bak-*
+
+# Local Claude Code state (keep project skills, ignore per-user settings)
+.claude/settings.local.json
+.claude/settings.local.md
+.claude/scheduled_tasks.lock
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build / output
+dist/
+build/
+out/
+*.log
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# HyperFrames render artefacts and caches
+**/.waveform-cache/
+**/out/
+**/renders/
+videos/**
+
+# TTS chunk intermediates — large + regenerable from narration.txt + edge-tts
+videos/*/audio/narration-chunks/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+
+# Raw screen recordings and private brand material (personal data) — never commit
+source/
+brand/private/
+tools/kaggle/*.ipynb
