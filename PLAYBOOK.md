@@ -16,11 +16,14 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
    screenshot, a transition) before the long render. Ask "what's wrong with this?" — then fix it.
 4. **Approvals.** Nothing paid without an explicit request and a cost estimate. No photo or video leaves the
    machine (to any AI or upload service) without the owner seeing it first.
-5. **Re-rendering after a change.** Videos up to 1:30: just re-render. Longer videos: ask the owner first,
+5. **Confirm feedback before rendering.** When the owner asks for changes, first reply with what you understood
+   from each point and exactly what you'll change (scene, time, old → new), what stays the same and anything
+   unclear. Render only after they approve.
+6. **Re-rendering after a change.** Videos up to 1:30: just re-render. Longer videos: ask the owner first,
    explaining the trade-off: a full re-render uses the fewest tokens but takes longest (give the minutes);
    patching only the changed scene uses a few more tokens (splicing, checking the joins) but is much faster.
    Changes that shift timing (new or edited voice lines, scene length, reordering) always need a full render.
-6. **Review like a director.** After rendering, check frames at every key moment, the audio edges and the sync,
+7. **Review like a director.** After rendering, check frames at every key moment, the audio edges and the sync,
    and say what was checked. Point out flaws yourself before the owner has to.
 
 ## 2. Universal craft rules
