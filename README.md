@@ -15,6 +15,23 @@ AI-generated presenters. Works for any company, app, brand or creator.
 >
 > Also used: Google Gemini TTS, Kokoro TTS, Wan 2.2 (Wan-AI) on Kaggle, Playwright, GSAP, ffmpeg.
 
+## More than a video generator: a trained AI video producer
+
+Most AI video tools generate a clip and stop. This kit trains the agent to work like a **producer, director and
+editor**:
+
+- **Plans** the video with you: purpose, audience, platform, language, structure and timing, before making anything.
+- **Writes** the script and on-screen text, natural in your language, with the brand named up front.
+- **Directs** AI footage with production know-how: consistent faces, products swapped naturally, real-world sizes,
+  transitions that never look fake.
+- **Reviews its own work** frame by frame against a quality checklist (sync, blur, consistency, pacing, sound)
+  and tells you what it checked and what it compromised on.
+- **Takes feedback and fixes it**, and asks before anything costs money or leaves your machine.
+- **Writes the post** for each platform (LinkedIn, Instagram, YouTube), knowing what shows before "see more".
+
+All of this know-how is written down in **[`PLAYBOOK.md`](PLAYBOOK.md)** (the craft) and **[`CLAUDE.md`](CLAUDE.md)**
+(the non-negotiable rules), learned from real production feedback.
+
 ## Get started (the easy way)
 
 Open this repo in **[Claude Code](https://claude.ai/code)** (desktop app, terminal or claude.ai/code) and paste:
@@ -55,6 +72,9 @@ first video. You answer questions; it does the work.
 ## Repo layout
 
 ```
+PLAYBOOK.md       the craft: how to plan, direct, review and post each kind of video
+SETUP.md          step-by-step setup the agent runs with you
+CLAUDE.md         standing rules (paid tools, approvals, sync, sounds, privacy)
 brand/            your brand: brand.json (from brand.example.json), BRAND.md, logos/, fonts/
 tools/tutorial/   screen recording → tutorial video builder (+ example spec)
 tools/screens/    edit/blur app screenshots

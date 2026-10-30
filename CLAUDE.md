@@ -105,6 +105,9 @@ videos/<slug>/
 
 ## Standing rules for this kit (follow on every video)
 
+The craft (how to plan, direct, review and write posts for each kind of video) is in `PLAYBOOK.md`: read it
+before making a video. The rules below are non-negotiable.
+
 ### Brand
 Read `brand/brand.json` and `brand/BRAND.md` before making any video. If they don't exist yet, run the setup
 questions in `SETUP.md` first. Say the brand name in the first narration line.

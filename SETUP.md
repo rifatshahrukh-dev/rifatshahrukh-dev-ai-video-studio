@@ -123,6 +123,8 @@ Suggest a **private** repo for the user's own brand material and finished videos
 
 ## Step 9 — Make the first video (MANDATORY)
 
+Read `PLAYBOOK.md` first: it is how this kit plans, directs, reviews and posts videos.
+
 Summarise what's set up (✓ / skipped) and start the video they chose in Step 1:
 - **Tutorial:** study the recording (1 fps contact sheets; scene-change times; tap coordinates on a grid),
   write `tools/tutorial/specs/<slug>.json` (see `tools/tutorial/README.md`), build, lint, snapshot, render.
