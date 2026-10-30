@@ -100,17 +100,7 @@ def narration(spec, proj, force):
     sr = g.SAMPLE_RATE
     total_len = len(audio) / sr
     pauses = g._pauses(audio, min_pause=0.12)
-    cuts = [0.0]
-    for k in range(1, len(clips)):
-        est = (clips[k - 1][-1]["end"] + clips[k][0]["start"]) / 2
-        cands = [p for p in pauses if abs((p[0] + p[1]) / 2 - est) < 1.5 and (p[0] + p[1]) / 2 > cuts[-1] + 0.3]
-        if cands:   # prefer long pauses close to the estimate
-            p = min(cands, key=lambda p: abs((p[0] + p[1]) / 2 - est) - 1.5 * (p[1] - p[0]))
-            cuts.append((p[0] + p[1]) / 2)
-        else:
-            print(f"[tts] warning: no pause found near step {k} boundary, cutting at estimate")
-            cuts.append(est)
-    cuts.append(total_len)
+    cuts = choose_cuts(steps, pauses, total_len)
     out = []
     for k, s in enumerate(steps):
         clip = audio[int(cuts[k] * sr):int(cuts[k + 1] * sr)]
@@ -121,9 +111,45 @@ def narration(spec, proj, force):
         seg = adir / f"step{k:02d}.wav"
         g.write_wav(seg, clip)
         ws = g.align_words(s["vo"].strip(), clip)        # re-align within this clean clip
+        rate = len(s["vo"].strip()) / max(len(clip) / sr, 0.01)
+        if not 9 <= rate <= 24:
+            sys.exit(f"[tts] step {k} clip is {len(clip) / sr:.2f}s for {len(s['vo'])} chars ({rate:.0f} chars/s): "
+                     "the narration was split in the wrong place. Re-run with --force-tts for a new take.")
         out.append({"wav": seg, "len": len(clip) / sr,
                     "words": [{"w": w["word"], "s": w["start"], "e": w["end"]} for w in ws]})
     return out, voice
+
+
+def choose_cuts(steps, pauses, total_len):
+    """Pick one pause per step boundary, all together (dynamic programming), so every step's clip length
+    matches its text length and real paragraph pauses are preferred. A greedy nearest-pause choice
+    drifted on short sub-steps and pushed every later step out of sync."""
+    chars = [max(len(s["vo"].strip()), 1) for s in steps]
+    exp = [c / sum(chars) * total_len for c in chars]
+    P = sorted(((a + b) / 2, b - a) for a, b in pauses)
+    K, M = len(steps), len(P)
+    INF = float("inf")
+    def seg_cost(k, t0, t1):
+        return 10 * ((t1 - t0 - exp[k]) / exp[k]) ** 2
+    # best[k][j]: boundary k (after step k) placed at pause j
+    best = [[INF] * M for _ in range(K - 1)]
+    back = [[-1] * M for _ in range(K - 1)]
+    for j in range(M):
+        best[0][j] = seg_cost(0, 0.0, P[j][0]) - P[j][1]
+    for k in range(1, K - 1):
+        for j in range(M):
+            for i in range(j):
+                if best[k - 1][i] == INF:
+                    continue
+                c = best[k - 1][i] + seg_cost(k, P[i][0], P[j][0]) - P[j][1]
+                if c < best[k][j]:
+                    best[k][j], back[k][j] = c, i
+    last = min(range(M), key=lambda j: best[K - 2][j] + seg_cost(K - 1, P[j][0], total_len) if best[K - 2][j] < INF else INF)
+    idx = [last]
+    for k in range(K - 2, 0, -1):
+        idx.append(back[k][idx[-1]])
+    idx.reverse()
+    return [0.0] + [P[j][0] for j in idx] + [total_len]
 
 
 def run_bytes(cmd):

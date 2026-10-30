@@ -69,6 +69,9 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
 - **Replace demo data** that doesn't match the story (e.g. electronics in a clothing demo): render tiles in the
   app's own style and overlay them at the right times; double-check they disappear when the screen changes.
 - Narration clips never cut off: pad and fade every clip; edges ≤ −40 dB.
+- **Check each step's voice clip holds its own line**, not just clean edges: clip length vs. text length should be
+  about the same speaking rate for every step. One odd clip means the narration was split in the wrong place and
+  every later step is out of sync (the tutorial builder now checks this and stops).
 
 ## 4. Social ads (10–30 s, vertical)
 
