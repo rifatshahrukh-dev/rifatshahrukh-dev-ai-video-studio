@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # Video Speedup Rule
 
 **Speedup is always an `ffmpeg` post-process on the rendered MP4. Never re-TTS, never re-render.**

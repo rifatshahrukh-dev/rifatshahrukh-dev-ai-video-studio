@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # Sub-composition wiring — silent studio failures and how to avoid them
 
 When `data-composition-src` mounts a sub-composition into a host, three lint-passable mistakes cause the studio to **silently load nothing** (canvas shows "Drop media here…", duration `0:00/0:00`, file tree visible but no composition selected). The renderer also produces empty frames.

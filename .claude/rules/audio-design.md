@@ -1,7 +1,8 @@
 ---
 paths:
-  - "**/index.html"
-  - "**/*.py"
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
 ---
 
 # Audio Design Rules — HyperFrames

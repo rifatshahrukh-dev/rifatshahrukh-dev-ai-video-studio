@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # Shorts typography — minimum font sizes for vertical 1080×1920
 
 Vertical shorts render to mobile portrait viewport. On a typical phone (~390 CSS px wide), the 1080px canvas displays at ~0.36× scale. Anything under 32px on canvas becomes ≤ 11–12px on screen — below the readable bound for a viewer scanning in 2–3 seconds. The Anthropic shorts template was authored with 24-second demo content; its smaller descriptor sizes (26–28px) work for that specific case but are too small for explainer / list-heavy shorts where the viewer must read each item.

@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # Step-by-step reveal — never reveal all bullets at once
 
 When a phase or scene contains an enumerated list (5 features, 3 timeline events, 4 stat pills, a decision matrix, a checklist, etc.), each item MUST enter on its own beat — paced to match when narration would name it. Never bring multiple items in within the first few seconds and then hold them static for the rest of the phase.

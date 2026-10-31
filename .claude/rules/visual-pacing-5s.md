@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # Visual pacing — never let the screen stay static for more than 5 seconds
 
 In any composition (Short or long-form), **at most 5 seconds may pass without something visibly changing on the foreground**. After ~5s of a frozen frame the eye loses anchor, the brain disengages, and on mobile the thumb flicks past. The narrative still drives — but when no narrative reveal is due, manufacture a beat.

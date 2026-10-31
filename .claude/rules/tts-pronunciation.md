@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # TTS Pronunciation — Heteronym & Mispronunciation Audit
 
 ElevenLabs `eleven_multilingual_v2` (the model this repo uses, per `.env`) reads English purely from spelling + sentence-context probability. It has no per-word semantic disambiguation, and **its pronunciation dictionaries on this model only support alias / string-substitution rules — phoneme rules require `eleven_flash_v2_5` or `eleven_turbo_v2`**, which we don't use.

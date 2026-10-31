@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # Shorts final frame — thumbnail-grade hold required
 
 Every vertical Short (`templates/shorts/<style>/`, every `videos/<slug>/` with a 1080×1920 canvas) MUST end on a **thumbnail-grade final frame** — a held still that, on its own with zero context, communicates the topic in under one second, stops the scroll, and makes someone tap.

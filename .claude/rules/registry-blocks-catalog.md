@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # HyperFrames registry catalog (project-local snapshot)
 
 Quick-scan inventory of every block + component installable via `npx hyperframes add <name>`. Maintained as a project-local cheat sheet so Claude can browse what's available when planning a video, instead of having to fetch the catalog every session.

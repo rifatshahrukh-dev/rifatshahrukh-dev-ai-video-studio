@@ -1,3 +1,10 @@
+---
+paths:
+  - "templates/shorts/**"
+  - ".archon/**"
+  - ".claude/skills/diy-yt-creator/**"
+---
+
 # Screenshot-anchor markers — no horizontal-bar overlays on source-screenshot bar charts
 
 When a phase's visual anchor is a real screenshot of a chart (a bar graph from the
