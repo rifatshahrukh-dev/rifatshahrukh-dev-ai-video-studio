@@ -82,5 +82,9 @@ Check frames with `tools/checks/frames.sh` (small thumbnails, one sheet per chec
 read only the part of a file you need and keep command output short; suggest a new chat when a video is finished and
 a cheaper model (`/model`) for routine steps such as re-renders and small text fixes.
 
+For a small change that does not move timing (wording, colour, size, volume, a pop-up's look): lint, then check the
+changed moment plus 1 s either side, the full length and the last frame, and any other scene using the same element.
+Anything that moves timing (voice lines, cuts, scene length, order) gets the full checks: every cut, lip sync, SFX spacing.
+
 ### Scope discipline
 Only modify files directly related to the task.

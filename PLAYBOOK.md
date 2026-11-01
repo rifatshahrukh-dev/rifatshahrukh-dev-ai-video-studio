@@ -84,6 +84,23 @@ before making any video; `CLAUDE.md` holds the non-negotiable rules, this file h
 - If a person on screen moves their lips but you can't sync a voice to them, **don't put voice over them** — use
   music, on-screen text and captions instead; keep narration to the hook and the end card.
 
+### Ad workflow: reference, storyboard, stock, hook variants
+
+1. **Start from a reference video** when one is sent: `python3 tools/ref_breakdown.py <file|URL> <out dir>` writes cut
+   times, pacing, one frame sheet and subtitles. Analyse only; never reuse its footage or audio. Report hook (first 2 s),
+   shot list with lengths, cuts per 10 s, caption style, sound and call to action, then propose 2-3 versions of your own:
+   what to keep, what to change, which shots need AI footage, stock or app screens, rough cost and time.
+2. **Storyboard before paying.** Before any paid GPU or API job, send ONE storyboard: a numbered contact sheet, per shot
+   what happens, length, source, full prompt and keyframes, total cost and GPU time, and risky shots (hands, turning
+   objects, long moves). Generate only after approval.
+3. **Stock footage for B-roll** that does not need your own characters (markets, couriers, phone close-ups, city). Check
+   each clip's licence (no logos or recognisable private people), note source and link in the video's README, and match
+   colour and lighting to the AI shots.
+4. **Hook variants.** To test several openings, keep the hook in `variants.json` (voice line, title, the word an
+   on-screen beat must land on) and let the builders read a `VARIANT` env var (unset = default video). Copy
+   `tools/variants/make_variants.sh` next to the builders: it builds, lints and renders each variant, then restores the
+   default. Re-check sync per variant, because a different line shifts word timings.
+
 ## 5. Investor / pitch explainers (16:9, 30–60 s)
 
 - Arc: **market → problem → product (how it works) → impact → closing card**.
