@@ -4,151 +4,294 @@
   1080,
   1920
  ],
- "duration": 20,
+ "duration": 21,
  "brand": {
-  "bg": "#0E1420",
+  "bg": "linear-gradient(165deg,#0F4C81 0%,#243a8a 55%,#5F4B8B 100%)",
   "text": "#FFFFFF",
-  "accent": "#4D8FF7"
+  "accent": "#F5DF4D",
+  "grid": true
  },
  "items": [
   {
    "id": "h1",
    "kind": "text",
    "text": "Your own\nmarketing\nproduction house",
-   "y": 520,
+   "y": 360,
    "size": 100,
    "at": {
+    "word": "showcrew",
+    "offset": 0.1,
     "t": 0.3
    },
-   "hold": 3.4
+   "hold": 3.6
+  },
+  {
+   "id": "r-script",
+   "kind": "robot",
+   "role": "script",
+   "x": 200,
+   "y": 900,
+   "size": 250,
+   "at": {
+    "t": 2.4
+   },
+   "hold": 4.6
+  },
+  {
+   "id": "r-edit",
+   "kind": "robot",
+   "role": "edit",
+   "x": 540,
+   "y": 900,
+   "size": 250,
+   "at": {
+    "t": 2.7
+   },
+   "hold": 4.3
+  },
+  {
+   "id": "r-sound",
+   "kind": "robot",
+   "role": "sound",
+   "x": 880,
+   "y": 900,
+   "size": 250,
+   "at": {
+    "t": 3.0
+   },
+   "hold": 4.0
   },
   {
    "id": "c1",
    "kind": "card",
    "text": "Brief it once",
-   "sub": "The crew does the rest.",
+   "sub": "A crew of robots does the rest.",
    "y": 1250,
    "at": {
-    "t": 3.9
+    "word": "brief",
+    "offset": 0,
+    "t": 4.2
    },
-   "hold": 2.4,
+   "hold": 3.2,
    "sfx": "notify-ding"
   },
   {
    "id": "h2",
    "kind": "text",
    "text": "Meet the crew",
-   "y": 520,
+   "y": 360,
    "size": 96,
    "at": {
-    "t": 6.6
+    "word": "writes",
+    "offset": 0,
+    "t": 7.6
    },
-   "hold": 2.6
+   "hold": 5.0
   },
   {
-   "id": "r1",
-   "kind": "card",
-   "text": "Scripter and Director",
-   "sub": "Scripts, storyboards, pacing",
-   "y": 900,
+   "id": "q-script",
+   "kind": "robot",
+   "role": "script",
+   "x": 200,
+   "y": 820,
+   "size": 300,
    "at": {
-    "t": 6.9
+    "t": 7.8
    },
-   "hold": 2.4,
+   "hold": 6.0
+  },
+  {
+   "id": "q-edit",
+   "kind": "robot",
+   "role": "edit",
+   "x": 540,
+   "y": 820,
+   "size": 300,
+   "at": {
+    "t": 8.1
+   },
+   "hold": 5.7
+  },
+  {
+   "id": "q-sound",
+   "kind": "robot",
+   "role": "sound",
+   "x": 880,
+   "y": 820,
+   "size": 300,
+   "at": {
+    "t": 8.4
+   },
+   "hold": 5.4
+  },
+  {
+   "id": "k1",
+   "kind": "card",
+   "text": "Scripts and storyboards",
+   "sub": "Writes and directs",
+   "y": 1250,
+   "at": {
+    "word": "writes",
+    "offset": 0,
+    "t": 8.0
+   },
+   "hold": 3.0,
    "sfx": "notify-ding"
   },
   {
-   "id": "r2",
+   "id": "k2",
    "kind": "card",
-   "text": "Editor and Sound",
-   "sub": "Captions, music, pop-up sounds",
-   "y": 1130,
+   "text": "Captions and cuts",
+   "sub": "Edits to every word",
+   "y": 1250,
    "at": {
-    "t": 7.9
+    "word": "edits",
+    "offset": 0,
+    "t": 9.2
    },
-   "hold": 2.4,
+   "hold": 2.6,
    "sfx": "notify-ding"
   },
   {
-   "id": "r3",
+   "id": "k3",
    "kind": "card",
-   "text": "Brand guardian and Producer",
-   "sub": "Your look, privacy blur, quality checks",
-   "y": 1360,
+   "text": "Music and sounds",
+   "sub": "Scored in code, free of licences",
+   "y": 1250,
    "at": {
-    "t": 8.9
+    "word": "scores",
+    "offset": 0,
+    "t": 10.4
    },
-   "hold": 2.4,
+   "hold": 2.6,
    "sfx": "notify-ding"
   },
   {
    "id": "h3",
    "kind": "text",
    "text": "And it checks its own work",
-   "y": 520,
+   "y": 330,
    "size": 90,
    "at": {
-    "t": 11.5
+    "word": "captions",
+    "offset": 0,
+    "t": 13.6
    },
-   "hold": 3.0
+   "hold": 3.6
+  },
+  {
+   "id": "qa",
+   "kind": "robot",
+   "role": "qa",
+   "x": 540,
+   "y": 640,
+   "size": 330,
+   "at": {
+    "t": 13.8
+   },
+   "hold": 4.2
   },
   {
    "id": "f1",
    "kind": "card",
    "text": "Words drive the timing",
    "sub": "Captions and pop-ups land on the spoken word",
-   "y": 900,
+   "y": 1130,
    "at": {
-    "t": 11.9
+    "word": "captions",
+    "offset": 0,
+    "t": 14.0
    },
-   "hold": 2.6,
+   "hold": 2.0,
    "sfx": "notify-ding"
   },
   {
    "id": "f2",
    "kind": "card",
    "text": "Lip-sync check",
-   "sub": "Flags a voice playing over a closed mouth",
+   "sub": "Flags a voice over a closed mouth",
    "y": 1130,
    "at": {
-    "t": 13.0
+    "word": "lip",
+    "offset": 0,
+    "t": 15.2
    },
-   "hold": 2.6,
+   "hold": 2.0,
    "sfx": "notify-ding"
   },
   {
    "id": "f3",
    "kind": "card",
-   "text": "Free by default",
-   "sub": "Asks before any paid tool or upload",
-   "y": 1360,
+   "text": "Free to start",
+   "sub": "Asks before any paid tool",
+   "y": 1130,
    "at": {
-    "t": 14.1
+    "word": "free",
+    "offset": 0,
+    "t": 16.4
    },
-   "hold": 2.5,
+   "hold": 2.2,
    "sfx": "notify-ding"
   },
   {
    "id": "logo",
    "kind": "image",
    "src": "logo.svg",
-   "y": 640,
+   "y": 520,
    "at": {
-    "t": 16.8
+    "t": 18.0
    },
-   "hold": 3.2,
+   "hold": 2.0,
    "keep": true
+  },
+  {
+   "id": "w1",
+   "kind": "robot",
+   "role": "script",
+   "x": 200,
+   "y": 900,
+   "size": 230,
+   "at": {
+    "t": 18.2
+   },
+   "hold": 1.8
+  },
+  {
+   "id": "w2",
+   "kind": "robot",
+   "role": "edit",
+   "x": 540,
+   "y": 900,
+   "size": 230,
+   "at": {
+    "t": 18.3
+   },
+   "hold": 1.7
+  },
+  {
+   "id": "w3",
+   "kind": "robot",
+   "role": "sound",
+   "x": 880,
+   "y": 900,
+   "size": 230,
+   "at": {
+    "t": 18.4
+   },
+   "hold": 1.6
   },
   {
    "id": "cta",
    "kind": "text",
    "text": "Paste the repo into your AI.\nIt sets itself up.",
-   "y": 1000,
-   "size": 70,
+   "y": 1250,
+   "size": 64,
    "at": {
-    "t": 17.4
+    "word": "paste",
+    "offset": 0,
+    "t": 18.5
    },
-   "hold": 2.6,
+   "hold": 1.5,
    "keep": true
   }
  ],
@@ -159,7 +302,7 @@
    "at": {
     "t": 0
    },
-   "volume": 0.35
+   "volume": 0.2
   }
  ]
 }
