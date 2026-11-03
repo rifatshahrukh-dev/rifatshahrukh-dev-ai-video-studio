@@ -33,6 +33,7 @@ Doing it by hand: [`docs/SETUP-STEP-BY-STEP.md`](docs/SETUP-STEP-BY-STEP.md).
 | Sound designer | Pop-up sounds, generated music, correct levels | `showcrew-sound` |
 | Brand guardian | Your colours, fonts, logo; privacy blurring | `showcrew-brand` |
 | Producer | Frame and sync checks, one-page review, budget and token guard | `showcrew-producer` |
+| Clone-video (opt-in) | Rebuilds a reference video's structure for you, optionally with Hypit | `showcrew-clone-video` |
 | AI-marks (opt-in) | Removes AI provenance marks only if you ask, after a warning | `showcrew-ai-marks` |
 
 `python3 showcrew crew` lists them.
@@ -49,6 +50,7 @@ Doing it by hand: [`docs/SETUP-STEP-BY-STEP.md`](docs/SETUP-STEP-BY-STEP.md).
 - Sound design: a soft sound on every pop-up (ding, chime, pop).
 - AI footage: free (Wan 2.2 on Kaggle), or rented GPU with a hard time limit and a self-destruct timer.
 - Reference-video breakdown: cuts, pacing and frame sheet, then 2-3 versions for your brand.
+- Reference cloning: free breakdown built in; optional hand-off to [Hypit](https://github.com/hypit-ai/hypit) (installed by you, not bundled) to rebuild a viral reference with your product.
 - Variants: many formats and hooks from one project.
 - Quality gates: frame sheets, sync check, one-page review. Nothing renders without your approval.
 - **Terse mode** (caveman) and **Lean mode** (ponytail) always on: short replies, small code.
