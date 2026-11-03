@@ -13,7 +13,7 @@ Showcrew: AI Marketing Studio stands on other people's work. Thank you.
 | [LatentSync](https://github.com/bytedance/LatentSync) | ByteDance | Apache-2.0 | Optional lip-sync model; **not bundled**, fetched on the GPU machine |
 | GSAP | GreenSock | see upstream | Animation library loaded by compositions |
 | Noto Sans Bengali | Google / Noto Project | SIL OFL 1.1 | Fonts in `brand/fonts/` |
-| Kokoro TTS | hexgrad | Apache-2.0 | Optional free offline voice |
+| Kokoro TTS, kokoro-onnx | hexgrad, thewh1teagle | Apache-2.0 / MIT | Optional free offline voice; model files are downloaded by the user |
 | Wan 2.2 | Wan-AI | see model card | Optional free GPU clips on Kaggle |
 | Gemini, ElevenLabs, Runpod, Kaggle, Hugging Face, Pexels | their owners | their terms | Optional services; you use them with your own accounts and keys |
 

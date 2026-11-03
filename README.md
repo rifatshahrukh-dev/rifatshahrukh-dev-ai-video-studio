@@ -16,7 +16,7 @@ Built to be fast and token-friendly, with the numbers to prove it (see [Measured
 ## See what it makes
 
 <p align="center"><a href="docs/assets/showcrew-promo.mp4"><img src="docs/assets/showcrew-promo.gif" alt="Showcrew promo video" width="300"></a><br>
-<sub>A 20-second promo made with Showcrew itself. Click to watch the full video. Its recipe is <a href="examples/promo/workflow.json"><code>examples/promo/workflow.json</code></a>.</sub></p>
+<sub>A 20-second promo with voice-over, made with Showcrew itself. Click to watch the full video. Its recipe is <a href="examples/promo/workflow.json"><code>examples/promo/workflow.json</code></a>.</sub></p>
 
 ## Start in one minute
 
@@ -47,7 +47,7 @@ Doing it by hand: [`docs/SETUP-STEP-BY-STEP.md`](docs/SETUP-STEP-BY-STEP.md).
 
 ## Features
 
-- Voice-over in any language: Gemini TTS (free tier), Kokoro (free, offline), Edge fallback, ElevenLabs (paid).
+- Voice-over in any language: Gemini TTS (free tier), Kokoro (free, offline; `scripts/kokoro-onnx-tts.py` needs no PyTorch), Edge fallback, ElevenLabs (paid).
 - Captions and highlights synced to every spoken word; no line cut off.
 - **Workflow file** (`tools/workflow/`): describe a video once in JSON (text, cards, images, clips, sounds, music), anchored to spoken words. `check` validates and shows the timings, `build` writes the HyperFrames video and a report. Change the script and rebuild: everything moves with the words.
 - **Lip-sync check** (`tools/lipsync/lipsync_check.py`): free, no model. Tells you when a voice line plays while the mouth is shut, and the audio-to-mouth delay.
