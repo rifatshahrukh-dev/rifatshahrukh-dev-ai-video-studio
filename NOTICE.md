@@ -10,6 +10,7 @@ Showcrew: AI Marketing Studio stands on other people's work. Thank you.
 | [ponytail](https://github.com/DietrichGebert/ponytail) | Dietrich Gebert | MIT | Lean coding mode, `.claude/skills/ponytail/` (licence kept) |
 | [watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover) | Guillaume Meyer | MIT | Opt-in AI-marks removal; **not bundled**, fetched only if the user asks |
 | [Hypit](https://github.com/hypit-ai/hypit) | Hypit.AI | Apache-2.0 with conditions (no hosted resale) | Optional reference-cloning agent; **not bundled**, the user installs it |
+| [LatentSync](https://github.com/bytedance/LatentSync) | ByteDance | Apache-2.0 | Optional lip-sync model; **not bundled**, fetched on the GPU machine |
 | GSAP | GreenSock | see upstream | Animation library loaded by compositions |
 | Noto Sans Bengali | Google / Noto Project | SIL OFL 1.1 | Fonts in `brand/fonts/` |
 | Kokoro TTS | hexgrad | Apache-2.0 | Optional free offline voice |

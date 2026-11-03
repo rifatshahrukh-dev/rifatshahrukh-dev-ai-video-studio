@@ -9,3 +9,6 @@ description: Editor: builds the video from templates with HyperFrames: captions 
 - Captions and highlights land on the spoken words (word timings: `scripts/compute_timings.py`).
 - Tutorial from a screen recording: `tools/tutorial/` (cut waiting, blur personal data, pop-out cards). Screenshot edits: `tools/screens/`.
 - Speed changes on a finished video: ffmpeg `setpts` and `atempo`, never re-render or re-voice.
+
+## Workflow file
+Prefer `tools/workflow/workflow.py` (JSON, items anchored to spoken words): `check`, then `build`. Never render without approval.
