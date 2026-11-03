@@ -45,7 +45,8 @@ Doing it by hand: [`docs/SETUP-STEP-BY-STEP.md`](docs/SETUP-STEP-BY-STEP.md).
 - Privacy blurring of names, numbers, addresses and shop names.
 - Screenshot editing: change text, price or product in app screenshots.
 - Recreated UI (comments, notifications, live-stream screens) animated frame by frame.
-- Sound design: a soft sound on every pop-up; music generated in code, no licensing problems.
+- **Background music, made for you:** `tools/music/make_music.py` generates royalty-free tracks in code (calm corporate bed or funky groove), any length, ducked under the voice. No licence worries.
+- Sound design: a soft sound on every pop-up (ding, chime, pop).
 - AI footage: free (Wan 2.2 on Kaggle), or rented GPU with a hard time limit and a self-destruct timer.
 - Reference-video breakdown: cuts, pacing and frame sheet, then 2-3 versions for your brand.
 - Variants: many formats and hooks from one project.
