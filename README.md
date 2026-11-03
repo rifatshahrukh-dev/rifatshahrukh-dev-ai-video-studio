@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/assets/logo.svg" alt="Showcrew: AI Marketing Studio" width="420"></p>
+
 # Showcrew: AI Marketing Studio
 
 **Your own marketing production house, inside your AI coding tool.** Brief the Marketing Manager; a crew of AI specialists
