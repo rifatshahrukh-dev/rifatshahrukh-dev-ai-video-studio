@@ -22,3 +22,15 @@ class T(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WordSync(unittest.TestCase):
+    def test_anchor_and_missing(self):
+        import importlib.util
+        s = importlib.util.spec_from_file_location("ws", os.path.join(os.path.dirname(__file__), "..", "tools/wordsync/wordsync.py"))
+        m = importlib.util.module_from_spec(s); s.loader.exec_module(m)
+        words = [{"word": "Start", "start": 0.4, "end": 0.7}, {"word": "free!", "start": 2.0, "end": 2.4}]
+        r = m.wordsync(words, [{"id": "a", "word": "FREE", "offset": -0.1, "hold": 2}])
+        self.assertEqual(r["a"], {"start": 1.9, "end": 3.9})
+        with self.assertRaises(SystemExit):
+            m.wordsync(words, [{"id": "b", "word": "nope"}])

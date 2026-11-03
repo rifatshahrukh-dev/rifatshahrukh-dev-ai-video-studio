@@ -50,7 +50,8 @@ Doing it by hand: [`docs/SETUP-STEP-BY-STEP.md`](docs/SETUP-STEP-BY-STEP.md).
 - Sound design: a soft sound on every pop-up (ding, chime, pop).
 - AI footage: free (Wan 2.2 on Kaggle), or rented GPU with a hard time limit and a self-destruct timer.
 - Reference-video breakdown: cuts, pacing and frame sheet, then 2-3 versions for your brand.
-- Reference cloning: free breakdown built in; optional hand-off to [Hypit](https://github.com/hypit-ai/hypit) (installed by you, not bundled) to rebuild a viral reference with your product.
+- **Word-anchored timing** (`tools/wordsync/`): place any on-screen item on a spoken word, not a second; a rewritten script can never leave it at a stale time.
+- Reference cloning: free breakdown built in, plus an optional hand-off to [Hypit](https://github.com/hypit-ai/hypit) (installed by you, not bundled).
 - Variants: many formats and hooks from one project.
 - Quality gates: frame sheets, sync check, one-page review. Nothing renders without your approval.
 - **Terse mode** (caveman) and **Lean mode** (ponytail) always on: short replies, small code.
