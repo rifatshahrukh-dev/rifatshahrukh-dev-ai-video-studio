@@ -64,7 +64,6 @@ def narration(spec, proj, force):
     import gemini_tts_lib as g
     try:
         from dotenv import load_dotenv
-        load_dotenv(REPO / ".archon" / ".env", override=False)
     except ImportError:
         pass
     steps = spec["steps"]
@@ -393,10 +392,13 @@ def main():
     run(["ffmpeg", "-y", "-v", "error", *inputs, "-filter_complex", ";".join(flt), "-map", "[o]",
          "-ac", "1", "-ar", "48000", "-c:a", "pcm_s16le", str(proj / "audio/narration.wav")])
     # soft music bed, looped to length
-    music = REPO / spec.get("music", "public/music/Archon.mp3")
-    run(["ffmpeg", "-y", "-v", "error", "-stream_loop", "-1", "-i", str(music), "-t", f"{total}",
-         "-af", f"afade=t=in:d=0.6,afade=t=out:st={max(0, total - 2):.2f}:d=2,loudnorm=I=-14:TP=-1.5",
-         "-ar", "44100", "-ac", "2", "-b:a", "160k", str(proj / "audio/music.mp3")])
+    if spec.get("music"):    # optional: path to a music file (make one with tools/music/make_music.py); otherwise a silent bed
+        run(["ffmpeg", "-y", "-v", "error", "-stream_loop", "-1", "-i", str(REPO / spec["music"]), "-t", f"{total}",
+             "-af", f"afade=t=in:d=0.6,afade=t=out:st={max(0, total - 2):.2f}:d=2,loudnorm=I=-14:TP=-1.5",
+             "-ar", "44100", "-ac", "2", "-b:a", "160k", str(proj / "audio/music.mp3")])
+    else:
+        run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-t", f"{total}",
+             str(proj / "audio/music.mp3")])
 
     # notification "ding" on every pop-up: pop-out cards (tap ring + 0.08 s), highlight boxes and note cards
     cues = sorted([tp["ring"] + 0.08 for tp in taps] + [h["a"] for h in highlights] + [n["a"] for n in notes])

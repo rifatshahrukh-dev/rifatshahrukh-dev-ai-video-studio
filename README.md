@@ -1,138 +1,86 @@
-# AI Video Studio
+# Showcrew: AI Marketing Studio
 
-**Turn screen recordings, screenshots and a short brief into finished, professional videos with an AI coding
-agent.** App tutorials, social ads, investor/pitch explainers and YouTube Shorts, with natural AI voiceover in
-many languages, captions synced to every word, privacy blurring, sound design, generated music and optional
-AI-generated presenters. Works for any company, app, brand or creator.
+**Your own marketing production house, inside your AI coding tool.** Brief the Marketing Manager; a crew of AI specialists
+writes, directs, films, edits and checks the promo videos for you: app tutorials, ads, explainers, investor pitches and Shorts,
+with natural voice-over in many languages. Works for any company, app, brand or creator.
 
-> ### Credits
-> This project is **built on [coleam00/hyperframes-ai-video-generation](https://github.com/coleam00/hyperframes-ai-video-generation)**
-> by **Cole Medin ([@coleam00](https://github.com/coleam00))**, a one-command English YouTube Shorts generator
-> powered by **[HyperFrames](https://hyperframes.heygen.com/)** (HeyGen's HTML + GSAP video framework,
-> [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)) and **[Archon](https://archon.diy)**
-> (Cole Medin's workflow harness). The original Shorts workflow is kept intact in
-> [`docs/shorts-workflow.md`](docs/shorts-workflow.md). Thank you, Cole!
->
-> Also used: Google Gemini TTS, Kokoro TTS, Wan 2.2 (Wan-AI) on Kaggle, Playwright, GSAP, ffmpeg.
+Built to be fast and token-friendly, with the numbers to prove it (see [Measured](#measured)).
 
-## More than a video generator: a trained AI video producer
+> **Credits.** Built on [coleam00/hyperframes-ai-video-generation](https://github.com/coleam00/hyperframes-ai-video-generation) by
+> **Cole Medin**, powered by **[HyperFrames](https://hyperframes.heygen.com/)** (HeyGen). Terse mode is
+> [caveman](https://github.com/JuliusBrussee/caveman), lean-code mode is [ponytail](https://github.com/DietrichGebert/ponytail).
+> Full list in [`NOTICE.md`](NOTICE.md).
 
-Most AI video tools generate a clip and stop. This kit trains the agent to work like a **producer, director and
-editor**:
+## Start in one minute
 
-- **Plans** the video with you: purpose, audience, platform, language, structure and timing, before making anything.
-- **Writes** the script and on-screen text, natural in your language, with the brand named up front.
-- **Directs** AI footage with production know-how: consistent faces, products swapped naturally, real-world sizes,
-  transitions that never look fake.
-- **Reviews its own work** frame by frame against a quality checklist (sync, blur, consistency, pacing, sound)
-  and tells you what it checked and what it compromised on.
-- **Takes feedback and fixes it**, and asks before anything costs money or leaves your machine.
+1. Paste this repo's link into your AI coding tool (for example Claude Code) and say **"set this up"**.
+2. The AI runs `python3 showcrew setup`, then tells you, step by step, **which domains to allow**, **which keys to add as secrets**
+   and exactly how. It never asks you to paste a key in chat.
+3. Tell the Marketing Manager what you want to promote. It plans, you approve, the crew builds.
 
-All of this know-how is written down in **[`PLAYBOOK.md`](PLAYBOOK.md)** (the craft) and **[`CLAUDE.md`](CLAUDE.md)**
-(the non-negotiable rules), learned from real production feedback.
+Doing it by hand: [`docs/SETUP-STEP-BY-STEP.md`](docs/SETUP-STEP-BY-STEP.md).
 
-## Free by default: built to not spend your money
+## The crew
 
-The kit is designed to run on **free tools wherever possible**. A normal laptop is enough: rendering needs no GPU,
-and everything below costs nothing.
-
-| Job | Free option the kit uses |
-|---|---|
-| Video rendering | HyperFrames + ffmpeg, on your own computer |
-| Voiceover | Google Gemini TTS (free tier), Kokoro (free, offline), Edge TTS |
-| Music | Generated in code (`tools/music/`), no licence needed |
-| Sound effects | Generated in code (`scripts/make_notify_sfx.py`) plus the included library |
-| Screenshot editing and blurring | Playwright + Pillow, on your own computer |
-| AI footage of people | Wan 2.2 on Kaggle's free GPUs (about 30 GPU hours a week) |
-| Stock footage | Pexels, Pixabay, Mixkit (free licences) |
-
-**Safeguards so the agent never spends without you knowing.** These are written into [`CLAUDE.md`](CLAUDE.md)
-as rules the agent must follow:
-- It **always looks for a free option first** and tells you what it found.
-- It **never uses a paid service, subscription or credits unless you ask for it** in that conversation.
-- Even then, it **confirms before every paid job** with the exact tool, settings and expected cost, and reports
-  the real cost afterwards. An earlier "yes" never covers a new job.
-- It **shows you every photo or video before uploading it anywhere**, paid or free.
-- Your API keys stay in a git-ignored file or your cloud environment's secrets, never in the chat or the repo.
-
-### When paid tools give better results (optional)
-
-Free tools cover most videos well. For some jobs, a paid service is noticeably better. The kit supports these
-**only when you ask for them**, for example:
-
-| Paid option | Better for | Instead of the free… |
+| Role | Does | Skill |
 |---|---|---|
-| **LTX-2.5 on a rented GPU** (e.g. Runpod A100, ~$1.20–1.40/hour) — **recommended** | Realistic AI presenters and product shots: in our side-by-side test (same start photo) it gave the best quality **and** speed: under 2 min per 5-s clip, about **$0.04 per extra clip** (~$0.16 for a one-off). Free model licence for companies under $10M revenue | Wan 2.2 on Kaggle, which can look artificial |
-| **MiniMax H3** (open model on a rented GPU, or MiniMax's own paid service: ~$0.20–0.65 per 5-s clip, $25 minimum top-up) | Clean, natural motion | Slow on one GPU (~25 min/clip); the open model can't be used or shown in the US/EU/UK/South Korea — use their paid service for worldwide ads |
-| **Kling AI** (credits; ~10 credits per second at 1080p on a turbo model) | Another paid option | In our test it was the weakest of the three (eye line off-camera) and the priciest per clip |
-| **ElevenLabs** | Premium voices, cloning your own voice | Gemini / Kokoro voices |
-| **Gemini API paid tier** | Higher daily limits for long or many videos | Gemini free tier |
-| **Google Veo, Runway** | Cinematic AI video clips | LTX / Wan |
-| **HeyGen avatars** | Talking presenters with real lip sync | Music and captions over AI footage (no lip sync) |
-| **Paid stock or music libraries** (e.g. Storyblocks, Artlist, Epidemic Sound) | Real filmed footage and produced music tracks | Free stock sites and code-generated music |
-| **Cloud GPUs** (e.g. Runpod) | Run the best free models (LTX-2.5, MiniMax H3) fast, no weekly limit; pay only by the minute. A permanent storage disk (~$5–6/month for LTX) only pays off at ~50 sessions a month: batch clips into one session instead | Kaggle's free GPUs |
+| Marketing Manager | You brief it; plans the campaign, picks videos, keeps budget | `showcrew-manager` |
+| Scripter | Video scripts: hook, scenes, narration, on-screen text, A/B hooks | `showcrew-scripter` |
+| Director | Storyboards, shot lists, reference-video breakdowns, pacing | `showcrew-director` |
+| Actors | Voices and on-screen presenters, with consent and AI disclosure | `showcrew-actors` |
+| Cinematographer | Footage: free stock first, then free GPU, then rented GPU | `showcrew-cinematographer` |
+| Editor | Builds the video, word-synced captions, tutorials from screen recordings | `showcrew-editor` |
+| Sound designer | Pop-up sounds, generated music, correct levels | `showcrew-sound` |
+| Brand guardian | Your colours, fonts, logo; privacy blurring | `showcrew-brand` |
+| Producer | Frame and sync checks, one-page review, budget and token guard | `showcrew-producer` |
+| AI-marks (opt-in) | Removes AI provenance marks only if you ask, after a warning | `showcrew-ai-marks` |
 
-Real footage filmed on a phone is still the best free upgrade of all: the agent can give you a shot list.
-
-## Get started (the easy way)
-
-Open this repo in **[Claude Code](https://claude.ai/code)** (desktop app, terminal or claude.ai/code) and paste:
-
-> _"Read SETUP.md and set everything up for me. Ask me whatever you need."_
-
-The agent walks you through everything in [`SETUP.md`](SETUP.md): it installs tools, asks for your brand,
-helps you create the free accounts and keys it needs (and tells you which are optional), and then makes your
-first video. You answer questions; it does the work.
-
-## What it makes
-
-| Video type | Format | Input you give |
-|---|---|---|
-| **App how-to tutorials** | 9:16, ~40–90 s | A phone screen recording + what you did in it |
-| **Social ads** (Reels/TikTok/Shorts) | 9:16, 10–30 s | Your product, the message, screenshots or footage |
-| **Investor / pitch explainers** | 16:9, 30–60 s | What your product does + app screenshots |
-| **Story ads with an AI presenter** | 9:16 | A description or photo of the presenter (free models, or paid Kling on request) |
-| **Topic Shorts** | 9:16, 30–60 s | Just a topic (the original workflow) |
+`python3 showcrew crew` lists them.
 
 ## Features
 
-- **Voiceover in any language** (Bangla, Hindi, English, …) with Google **Gemini TTS** (free tier, very natural),
-  Kokoro (free, offline) or ElevenLabs (paid). Word-synced captions; no line is ever cut off.
-- **Tutorial builder** (`tools/tutorial/`): cuts waiting and typing out of a screen recording, freezes on each tap
-  while the voice explains, pops the tapped button out as an enlarged card, highlights, notes, step titles.
-- **Privacy blurring** of names, phone numbers, addresses, shop/page names and figures.
-- **Screenshot editing** (`tools/screens/`): swap the product, price or text in real app screenshots so demos show
-  what you want.
-- **Recreated UI** (social posts, comment sheets, live-stream screens, notifications) animated frame by frame.
-- **Sound design**: a notification sound on every pop-up, order chimes, pops (`shared/audio/sfx/`).
-- **Music generated in code** (`tools/music/`): calm corporate or funky/groovy, so there are no licensing problems.
-- **AI footage**: best value is **LTX-2.5 on a rented GPU** (cents per clip, under 2 minutes each); fully free is
-  Wan 2.2 on Kaggle (`tools/kaggle/`). Anything paid only on your explicit request, with a cost estimate before every job.
-- **Quality rules the agent follows** (`CLAUDE.md`): free tools first, approval before anything leaves your
-  machine, voice/lip sync checks, pacing, typography, thumbnail-grade last frames.
+- Voice-over in any language: Gemini TTS (free tier), Kokoro (free, offline), Edge fallback, ElevenLabs (paid).
+- Captions and highlights synced to every spoken word; no line cut off.
+- Tutorial builder: cuts waiting and typing from a screen recording, pop-out button cards, step titles.
+- Privacy blurring of names, numbers, addresses and shop names.
+- Screenshot editing: change text, price or product in app screenshots.
+- Recreated UI (comments, notifications, live-stream screens) animated frame by frame.
+- Sound design: a soft sound on every pop-up; music generated in code, no licensing problems.
+- AI footage: free (Wan 2.2 on Kaggle), or rented GPU with a hard time limit and a self-destruct timer.
+- Reference-video breakdown: cuts, pacing and frame sheet, then 2-3 versions for your brand.
+- Variants: many formats and hooks from one project.
+- Quality gates: frame sheets, sync check, one-page review. Nothing renders without your approval.
+- **Terse mode** (caveman) and **Lean mode** (ponytail) always on: short replies, small code.
+- Free by default. Paid tools, uploads and rented GPUs only after you see the exact files, prompt and cost.
+- Self-setup: `python3 showcrew doctor` checks tools, keys and domains and prints the fix.
 
-## Repo layout
+## Commands
 
 ```
-PLAYBOOK.md       the craft: how to plan, direct, review and post each kind of video
-SETUP.md          step-by-step setup the agent runs with you
-CLAUDE.md         standing rules (paid tools, approvals, sync, sounds, privacy)
-brand/            your brand: brand.json (from brand.example.json), BRAND.md, logos/, fonts/
-tools/tutorial/   screen recording → tutorial video builder (+ example spec)
-tools/screens/    edit/blur app screenshots
-tools/music/      generated music beds
-tools/kaggle/     free-GPU AI video (Wan 2.2) notebook generator
-scripts/          TTS engines (Gemini, Kokoro, ElevenLabs, Edge), SFX generator, helpers
-templates/        Shorts templates (classic, archon, anthropic)
-shared/audio/sfx/ sound effects
-.claude/          skills + rules the agent follows
-.archon/          the original topic-to-Short workflow
-videos/<slug>/    one folder per video (gitignored by default)
+python3 showcrew setup | doctor | domains | secrets | crew
+python3 showcrew new <slug> [--template classic]
+python3 showcrew check <video.mp4> <sheet.png> <t1> [t2 ...]
+python3 showcrew breakdown <file|URL> <out dir>
 ```
+
+## Measured
+
+| What | Before (old kit) | Now |
+|---|---|---|
+| Instructions the AI must read at start (`CLAUDE.md` + `AGENTS.md`) | 6,588 bytes (~1,650 tokens) | 3,201 bytes (~800 tokens), 51% less |
+| Core command | none | one file, 139 lines, standard library only |
+| Python packages `setup` installs | n/a | 3 (`numpy`, `pillow`, `python-dotenv`) |
+
+Tokens are estimated as bytes / 4. Role guides load only when that role is called.
+
+## Responsible use
+
+Only use real people's faces or voices with their consent. Label AI-made people and clips where platforms or law require it.
+Blur personal data. The AI-marks tool is opt-in and warns first.
 
 ## License: free to use, fair to share
 
-AI Video Studio is **free for personal use, learning, testing and non-profit work**. Go ahead: try it, break it,
+Showcrew is **free for personal use, learning, testing and non-profit work**. Go ahead: try it, break it,
 improve it, share it.
 
 **Using it to make money?** That's great, and it's allowed. I just ask two things:
@@ -146,4 +94,4 @@ it, offering it as a paid service, and using its videos to promote a business. T
 [`LICENSE`](LICENSE).
 
 The original project by **Cole Medin** stays under the **MIT License**, as he published it; the terms above cover
-the AI Video Studio additions. Third-party tools and models keep their own licences.
+the Showcrew additions. Third-party tools and models keep their own licences.

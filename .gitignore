@@ -1,14 +1,9 @@
-# Secrets / env
+# Secrets / env (never commit keys)
 .env
+.env.*
+secrets/
 .env.local
 .env.*.local
-
-# Archon runtime artifacts — NEVER commit
-.archon/mcp/
-.archon/state/
-.archon/.env
-.archon/.env.*
-.archon/.run-logs/
 
 # Iteration backups — useful locally during tuning, never commit
 **/*.bak

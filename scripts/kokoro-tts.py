@@ -132,7 +132,6 @@ def main() -> int:
 
     # Load .env — same precedence as elevenlabs-tts.py
     repo_root = Path(__file__).resolve().parent.parent
-    load_dotenv(repo_root / ".archon" / ".env", override=False)
     load_dotenv(repo_root / ".env", override=True)
 
     # Resolve project paths

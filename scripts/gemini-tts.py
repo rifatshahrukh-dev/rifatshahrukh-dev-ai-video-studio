@@ -19,7 +19,7 @@ Flags:
 
 Setup:
   1. Free API key: https://aistudio.google.com/apikey
-  2. Add GEMINI_API_KEY=... to .archon/.env (never commit it)
+  2. Set GEMINI_API_KEY in your environment secrets (never commit it)
   3. pip install numpy python-dotenv   (no Google SDK needed)
 
 Language is detected from the script text, so Bengali, Hindi, Spanish, etc.
@@ -78,7 +78,6 @@ def main() -> int:
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parent.parent
-    load_dotenv(repo_root / ".archon" / ".env", override=False)
     load_dotenv(repo_root / ".env", override=True)
 
     project = args.project_dir if args.project_dir.is_absolute() else (repo_root / args.project_dir).resolve()

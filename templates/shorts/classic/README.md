@@ -25,9 +25,8 @@ Each phase is mutex-visible (only one at a time), separated by a blur + crossfad
 
 **This template ships with two placeholder strings that you MUST replace before creating any real video.**
 
-1. **Edit `#top-banner-wordmark` in `index.html`** — search for `YOUR BRAND` and replace with your actual brand name (e.g. `ARCHON`, `MYCO`, `YOUR TOOL`). This renders as a CSS gradient wordmark in the top banner. To use a logo image instead, see [assets/wordmark-placeholder.txt](./assets/wordmark-placeholder.txt) for the SVG swap pattern.
+1. **Edit `#top-banner-wordmark` in `index.html`** — search for `YOUR BRAND` and replace with your actual brand name (e.g. `MYCO`, `YOUR TOOL`). This renders as a CSS gradient wordmark in the top banner. To use a logo image instead, see [assets/wordmark-placeholder.txt](./assets/wordmark-placeholder.txt) for the SVG swap pattern.
 
-2. **Replace `your-domain.com` in Phase 4** — search for `your-domain.com` in `index.html` and replace with your real URL (e.g. `archon.diy`, `yourtool.io`, `app.example.com`).
 
 3. **Optionally swap palette accents** — all brand colors live in `#root` as CSS variables. To match your brand, change just two values:
    ```css
@@ -105,7 +104,6 @@ Most styling is driven by CSS variables on `#root`:
 }
 ```
 
-Variable naming note: `--cyan` and `--magenta` are named for structural consistency with the archon template, not because they are literally cyan or magenta. In this template `--cyan` is bright blue and `--magenta` is sky blue. This makes diffing templates clean — only the hex values change.
 
 Per-phase accent rotation: change a stat-pill's class from `.cyan` to `.magenta` or a feature card from `.blue` to `.purple`. The CSS rules cover all variants already.
 
@@ -160,8 +158,6 @@ Or list the cues you want in `videos/<slug>/sfx-cues.txt` (one per line) and run
 
 See `DESIGN.md` "What NOT to Do" for the full list. The big ones:
 
-- No Archon cyan (`#22D9A0`) or magenta (`#E64DCC`) — those belong to the Archon template.
-- No Anthropic orange (`#E07B3C`) or cream-clay (`#C97A5C`) — those belong to the Anthropic template.
 - No light canvas — dark stage only.
 - No more than one accent per phase.
 - No serif headlines — Inter only.

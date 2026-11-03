@@ -14,7 +14,7 @@ Usage:
   python scripts/compute_timings.py videos/<slug> [--slam-word AGENTIC]
 
 The slam word is the phase-1 ALL-CAPS payoff word the hero animation locks
-to. Defaults to AGENTIC (the Archon template's default); pass --slam-word
+to. Defaults to AGENTIC (the template's default); pass --slam-word
 for other templates or alternate slam words.
 
 Why this script exists:

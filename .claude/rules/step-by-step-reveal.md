@@ -1,7 +1,7 @@
 ---
 paths:
   - "templates/shorts/**"
-  - ".archon/**"
+  - "templates/**"
   - ".claude/skills/diy-yt-creator/**"
 ---
 

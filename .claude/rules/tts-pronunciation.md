@@ -1,7 +1,7 @@
 ---
 paths:
   - "templates/shorts/**"
-  - ".archon/**"
+  - "templates/**"
   - ".claude/skills/diy-yt-creator/**"
 ---
 
@@ -73,7 +73,7 @@ The Tech-pronunciation table above covers fixed cases. The harder pattern is **u
 | A vowel-stripped abbreviation of a single English word | `RVW` (Review), `MGR` (Manager), `MSG` (Message), `CFG` (Config) | **Expand to the full word**: `review`, `manager`, `message`, `config` | Spelling out misses that there's no underlying initialism — the listener can't reverse-engineer "R V W" back to "Review" without the visual |
 | `AI` specifically | `AI` | **Keep as `AI`** | ElevenLabs `eleven_multilingual_v2` pronounces it natively. Spacing as `A I` works but is noise. |
 
-**Heuristic for the script writer**: if you'd say it as initials when reading the brand's docs aloud, spell it out. If you'd say the English word, write the English word. If you can't decide, ask: *"What does the company / project's marketing voice say it as?"* For Archon: `PIV` is initials (it's "P-I-V loop" in their own talks), `FIX` is the verb (it's "the fix workflow"), `RVW` is "review" (the workflow that does reviews).
+**Heuristic for the script writer**: if you'd say it as initials when reading the brand's docs aloud, spell it out. If you'd say the English word, write the English word. If you can't decide, ask: *"What does the company / project's marketing voice say it as?"* For Acme: `PIV` is initials (it's "P-I-V loop" in their own talks), `FIX` is the verb (it's "the fix workflow"), `RVW` is "review" (the workflow that does reviews).
 
 Document per-video overrides at the top of `videos/<slug>/script.txt` as a leading HTML comment — the TTS scripts strip these before the API call:
 
@@ -85,7 +85,7 @@ Document per-video overrides at the top of `videos/<slug>/script.txt` as a leadi
 -->
 ```
 
-Future videos in the same brand family inherit the convention. When a new brand's tokens cause regen, add the brand-specific decisions to a per-template note (e.g. `templates/shorts/archon/PRONUNCIATION.md`) so the next playbook run picks it up automatically.
+Future videos in the same brand family inherit the convention. When a new brand's tokens cause regen, add the brand-specific decisions to a per-template note (e.g. `templates/shorts/classic/PRONUNCIATION.md`) so the next playbook run picks it up automatically.
 
 ## What NOT to do
 

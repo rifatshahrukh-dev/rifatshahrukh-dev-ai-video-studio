@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+"""Showcrew: AI Marketing Studio. One small command for the whole crew. Python standard library only.
+
+  ./showcrew doctor [--offline] [--json]   check tools, API keys and allowed domains, print exactly what to fix
+  ./showcrew setup                         install the few Python packages the core needs, then run doctor
+  ./showcrew domains | secrets             list the domains / keys with step-by-step instructions
+  ./showcrew crew                          list the crew (roles) and what each one does
+  ./showcrew new <slug> [--template classic]   start a video project from a template
+  ./showcrew check <video.mp4> <sheet.png> <t1> [t2 ...]   small contact sheet of a video at the given seconds
+  ./showcrew breakdown <file|URL> <out dir>   cuts, pacing and frame sheet of a reference video
+"""
+import argparse
+import glob
+import json
+import os
+import shutil
+import subprocess
+import sys
+import urllib.request
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+TOOLS = [("core", "python3", "runs the scripts"), ("core", "node", "runs HyperFrames"), ("core", "npx", "runs HyperFrames"),
+         ("core", "ffmpeg", "cuts, joins and encodes video"), ("core", "ffprobe", "reads video info"), ("optional", "git", "download updates")]
+DOMAINS = [  # (level, host, why)
+    ("core", "github.com", "download the project and tools"), ("core", "raw.githubusercontent.com", "download single files"),
+    ("core", "registry.npmjs.org", "npx hyperframes (the video renderer)"), ("core", "pypi.org", "Python packages"),
+    ("core", "files.pythonhosted.org", "Python package files"), ("core", "cdn.jsdelivr.net", "animation library for compositions"),
+    ("core", "generativelanguage.googleapis.com", "Gemini voice-over"),
+    ("optional", "api.elevenlabs.io", "ElevenLabs voice-over"), ("optional", "huggingface.co", "Kokoro voice and model files"),
+    ("optional", "www.kaggle.com", "free GPU clips"), ("optional", "api.runpod.io", "rented GPU"),
+    ("optional", "rest.runpod.io", "rented GPU"), ("optional", "api.pexels.com", "free stock footage"),
+    ("optional", "cdn.playwright.dev", "browser download for screenshots")]
+SECRETS = [  # (level, name, what it is for, where to get it)
+    ("core", "GEMINI_API_KEY", "Gemini voice-over (free tier)", "https://aistudio.google.com/apikey -> Create API key"),
+    ("optional", "ELEVENLABS_API_KEY", "ElevenLabs voice-over", "elevenlabs.io -> Profile -> API keys"),
+    ("optional", "KAGGLE_USERNAME", "free GPU clips (your Kaggle user name)", "kaggle.com -> Settings"),
+    ("optional", "KAGGLE_KEY", "free GPU clips", "kaggle.com -> Settings -> API -> Create new token"),
+    ("optional", "RUNPOD_API_KEY", "rented GPU (costs money, always asks first)", "runpod.io -> Settings -> API Keys"),
+    ("optional", "HF_TOKEN", "Hugging Face model downloads", "huggingface.co -> Settings -> Access Tokens (read)"),
+    ("optional", "PEXELS_API_KEY", "free stock footage", "pexels.com/api")]
+HOW_DOMAIN = ("Claude Code on the web: open the environment menu in the session title bar -> Edit -> Network access -> choose Limited, "
+              "add the host under Allowed domains and keep 'Allow package managers' ticked (or pick a broader level). "
+              "Other tools: add the host to your firewall or proxy allow-list.")
+HOW_SECRET = ("Claude Code on the web: environment menu in the session title bar -> Edit -> Network secrets (or Environment variables) -> "
+              "add NAME=value, then start a NEW session. Other tools: set the variable in your shell or a local .env file "
+              "(.env is git-ignored). NEVER paste a key into the chat and never commit it.")
+
+
+def have_secret(name, env=os.environ):
+    return bool(env.get(name, "").strip())
+
+
+def reachable(host, timeout=6):
+    """True if an HTTPS request gets any answer (even 403/404). A refused tunnel or no route means blocked."""
+    try:
+        urllib.request.urlopen(urllib.request.Request(f"https://{host}/", method="HEAD"), timeout=timeout)
+        return True
+    except urllib.error.HTTPError:
+        return True
+    except Exception:
+        return False
+
+
+def doctor(offline=False, as_json=False):
+    res = {"tools": [(lv, n, bool(shutil.which(n)), why) for lv, n, why in TOOLS],
+           "secrets": [(lv, n, have_secret(n), why) for lv, n, why, _ in SECRETS],
+           "domains": [] if offline else [(lv, h, reachable(h), why) for lv, h, why in DOMAINS]}
+    if as_json:
+        print(json.dumps(res, indent=1))
+    else:
+        for kind in ("tools", "secrets", "domains"):
+            print(f"\n== {kind}")
+            for lv, name, ok, why in res[kind]:
+                print(f"  [{'ok' if ok else ('MISSING' if lv == 'core' else 'missing')}] {name:38} {lv:9} {why}")
+        miss = [(k, n) for k in res for lv, n, ok, _ in res[k] if not ok and lv == "core"]
+        opt = [(k, n) for k in res for lv, n, ok, _ in res[k] if not ok and lv == "optional"]
+        if miss:
+            print("\nFix these first (core):")
+            for i, (k, n) in enumerate(miss, 1):
+                print(f"  {i}. {n}: " + (HOW_DOMAIN if k == "domains" else HOW_SECRET if k == "secrets" else "install it (see docs/SETUP-STEP-BY-STEP.md)"))
+        if opt:
+            print(f"\n{len(opt)} optional items are missing; add them only when you need that feature (docs/SETUP-STEP-BY-STEP.md).")
+        if not miss:
+            print("\nCore is ready. Brief the Marketing Manager (see AGENTS.md).")
+    return not any(not ok for k in res for lv, n, ok, _ in res[k] if lv == "core")
+
+
+def crew():
+    for p in sorted(glob.glob(os.path.join(ROOT, ".claude/skills/showcrew-*/SKILL.md"))):
+        head = open(p).read().split("---")[1]
+        name = [l.split(":", 1)[1].strip() for l in head.splitlines() if l.startswith("name:")][0]
+        desc = [l.split(":", 1)[1].strip() for l in head.splitlines() if l.startswith("description:")][0]
+        print(f"{name:26} {desc}")
+
+
+def new(slug, template="classic"):
+    src, dst = os.path.join(ROOT, "templates/shorts", template), os.path.join(ROOT, "videos", slug)
+    if not os.path.isdir(src):
+        sys.exit(f"no template '{template}' (have: {', '.join(os.listdir(os.path.join(ROOT, 'templates/shorts')))})")
+    if os.path.exists(dst):
+        sys.exit(f"videos/{slug} already exists")
+    shutil.copytree(src, dst)
+    print(f"created videos/{slug} from template '{template}'")
+
+
+def run(cmd):
+    sys.exit(subprocess.call(cmd))
+
+
+def main():
+    ap = argparse.ArgumentParser(prog="showcrew", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    d = sub.add_parser("doctor"); d.add_argument("--offline", action="store_true"); d.add_argument("--json", action="store_true")
+    sub.add_parser("setup"); sub.add_parser("domains"); sub.add_parser("secrets"); sub.add_parser("crew")
+    n = sub.add_parser("new"); n.add_argument("slug"); n.add_argument("--template", default="classic")
+    c = sub.add_parser("check"); c.add_argument("args", nargs="+")
+    b = sub.add_parser("breakdown"); b.add_argument("args", nargs=2)
+    a = ap.parse_args()
+    if a.cmd == "doctor":
+        sys.exit(0 if doctor(a.offline, a.json) else 1)
+    if a.cmd == "setup":
+        subprocess.call([sys.executable, "-m", "pip", "install", "-q", "numpy", "pillow", "python-dotenv"])
+        sys.exit(0 if doctor() else 1)
+    if a.cmd == "domains":
+        [print(f"{lv:9} {h:36} {why}") for lv, h, why in DOMAINS]; print("\nHow to allow:", HOW_DOMAIN)
+    elif a.cmd == "secrets":
+        [print(f"{lv:9} {nm:20} {why}\n          get it: {where}") for lv, nm, why, where in SECRETS]; print("\nHow to add:", HOW_SECRET)
+    elif a.cmd == "crew":
+        crew()
+    elif a.cmd == "new":
+        new(a.slug, a.template)
+    elif a.cmd == "check":
+        run([os.path.join(ROOT, "tools/checks/frames.sh"), "sheet", *a.args])
+    elif a.cmd == "breakdown":
+        run([sys.executable, os.path.join(ROOT, "tools/ref_breakdown.py"), *a.args])
+
+
+if __name__ == "__main__":
+    main()

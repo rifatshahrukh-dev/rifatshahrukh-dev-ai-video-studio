@@ -6,8 +6,7 @@ Visual system for **YouTube Shorts** (1080x1920, 30fps, 60-180s) covering any de
 
 This is the brand-neutral default template. Palette is a generic dev-tool dark theme — deep navy with bright blue accents. Designed to look at home for any topic. Swap `--accent-1` and `--accent-2` (mapped to `--cyan` and `--magenta` in the CSS) to match your brand without losing the structural integrity of the composition.
 
-- **Canvas:** Deep navy `#0E1420` — one step cooler than the anthropic near-black. Inspired by the blue-shifted dark mode palettes common across VS Code, GitHub dark, and terminal emulators.
-- **Bright blue accent:** `#4D8FF7` — a clean, saturated blue that reads as "primary action / hero moment" in any dev-tool context. Avoids the electric neon of Archon's cyan; avoids the muted slate of the Anthropic supporting palette. Sits in the readable, professional midrange.
+- **Canvas:** Deep navy `#0E1420` . Inspired by the blue-shifted dark mode palettes common across VS Code, GitHub dark, and terminal emulators.
 - **Sky blue secondary:** `#7AC4F5` — a lighter desaturated sibling to the hero blue. Natural CTA color: warm enough to land softly after the blue opens, cool enough to stay on-palette.
 - **Soft indigo:** `#8B7FE8` — bridges the blue and teal without clashing. Mid-palette bridge for Phase 3 cards.
 - **Teal-green:** `#5EDBA4` — the workhorse accent. Distinct from blue/indigo, never decorative alone, adds a third dimension to Phase 3 card rotation.
@@ -44,7 +43,7 @@ A deep navy stage tuned for vertical video about developer tools, AI workflows, 
 | Pill background | `rgba(232, 233, 240, 0.06)` | Neutral chip fill | Default chip / pill fill |
 | Pill border | `rgba(232, 233, 240, 0.16)` | Neutral chip stroke | Default chip / pill stroke |
 
-**Variable name note:** The CSS variables are named `--cyan`, `--magenta`, `--purple`, `--blue` to keep the HTML structure structurally identical to the archon and anthropic templates. In the Classic template, `--cyan` maps to bright blue, `--magenta` maps to sky blue, `--purple` maps to soft indigo, and `--blue` maps to teal-green. This is intentional — anyone diffing two templates sees only CSS values change, not class names or HTML structure.
+**Variable name note:** The CSS variables are named `--cyan`, `--magenta`, `--purple`, `--blue` to keep the HTML structure structurally identical to the other Shorts templates. In the Classic template, `--cyan` maps to bright blue, `--magenta` maps to sky blue, `--purple` maps to soft indigo, and `--blue` maps to teal-green. This is intentional — anyone diffing two templates sees only CSS values change, not class names or HTML structure.
 
 **Contrast check (approximate, WCAG):**
 - Primary text on background: ~14:1 (AAA)
@@ -149,11 +148,8 @@ Hard cap: **never** exceed `0.25` on a single per-cue SFX (sonic-logo at `0.60` 
 
 ## What NOT to Do
 
-1. **No Archon cyan or magenta.** `#22D9A0` (Archon cyan) and `#E64DCC` (Archon magenta) must not appear here. They belong to the Archon template.
-2. **No Anthropic orange or cream.** `#E07B3C` (Anthropic orange) and `#C97A5C` (cream-clay) must not appear here. They belong to the Anthropic template.
 3. **No light canvas.** This is dark stage. Do not tint the background toward gray paper or pure black — keep the deep navy `#0E1420`.
 4. **No more than one accent per phase.** Pick bright-blue OR sky-blue OR soft-indigo OR teal-green for that phase's chrome.
-5. **No electric blue.** The Archon electric blue (`#4B82EF`) has no role here — use the brighter but less saturated `#4D8FF7` instead.
 6. **No serif headlines.** Inter only.
 7. **No flashing strobes / glitches longer than 6 frames.** Professional, considered register.
 8. **No `<br>` in content text.** Use `max-width` so text wraps naturally.

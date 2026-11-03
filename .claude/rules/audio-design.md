@@ -1,7 +1,7 @@
 ---
 paths:
   - "templates/shorts/**"
-  - ".archon/**"
+  - "templates/**"
   - ".claude/skills/diy-yt-creator/**"
 ---
 
@@ -13,7 +13,6 @@ mapping, the no-BG-music-on-Shorts rule, and the alignment audit.
 
 **Cross-references:**
 
-- Per-template cue summary: [`templates/shorts/anthropic/DESIGN.md`](../../templates/shorts/anthropic/DESIGN.md)
   (§ Audio / SFX Cues)
 - Cue file catalog: [`shared/audio/MANIFEST.md`](../../shared/audio/MANIFEST.md)
 - SFX library generator: [`scripts/generate-sfx-library.py`](../../scripts/generate-sfx-library.py)
@@ -44,48 +43,6 @@ Music — TBD" below.
 
 ---
 
-## Anthropic Shorts — Default Cue Set (Transition-Whoosh Only)
-
-For the `templates/shorts/anthropic/` family, the **default** SFX set is *only*
-`cinematic-whoosh` on phase transitions — no per-element impact-slams, scale-slams,
-spring-pops, pops, screen-shakes, glitch-zaps, strike-crosses, or sonic-logo. Per-element
-SFX read as cluttered against the calm dark-stage aesthetic and compete with narration.
-They are opt-in for a single deliberate moment when a stat / pivot / hero word
-unambiguously needs the punctuation. This is enforced in `templates/shorts/anthropic/DESIGN.md`
-§ Audio / SFX Cues and in the `new-anthropic-short` playbook step 14.
-
-### Whoosh placement on phase transitions (HARD)
-
-Every `cinematic-whoosh` MUST fire at the **visual phase transition moment** — the
-exact `sceneT` (`T1`, `T2`, …) used by your `tl.to("#phaseN", …)` transition.
-Do NOT pre-roll it to `sceneT - 0.4`. Although the shape-backdrop reposition tween
-schedules its motion at `sceneT - 0.4`, the audible whoosh peak should align with
-the visual swap that the viewer perceives, not with the shape motion start. This
-matches the production pattern in `videos/claude-code-v2126-short/` and
-`videos/claude-code-v2128-133-short/`, and is the listening-test ground truth.
-
-`data-duration` MUST be **1.5s** — long enough to expose the whoosh's full
-natural decay tail past the 0.836s source-file length. A shorter duration
-(0.84) clips the tail and makes the whoosh feel weak or "missing" — that was
-the bug in the 2026-05-10 `videos/5-claude-skills-viral-short/` build before
-this rule was clarified.
-
-```html
-<!-- WRONG — whoosh fires 0.4s before the visual transition, masked by narration -->
-<audio id="sfx-whoosh-t1" class="clip" src="assets/sfx/cinematic-whoosh.mp3"
-       data-start="6.1" data-duration="0.84" data-track-index="3" data-volume="0.11"></audio>
-
-<!-- RIGHT — whoosh fires together with the visual phase swap, natural decay tail -->
-<audio id="sfx-whoosh-t1" class="clip" src="assets/sfx/cinematic-whoosh.mp3"
-       data-start="6.5" data-duration="1.5"  data-track-index="3" data-volume="0.11"></audio>
-```
-
-Drift here is `> 0.15s` (the bug threshold elsewhere in this file), so an unaligned
-whoosh IS a defect, not a stylistic choice. If a future helper repositions shapes
-at a different offset, update the whoosh `data-start` to match it — the contract
-is "whoosh fires WHEN shapes start moving", not "whoosh fires at sceneT - 0.4".
-
----
 
 ## SFX Volume Caps (MANDATORY)
 

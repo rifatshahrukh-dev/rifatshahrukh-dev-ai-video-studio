@@ -1,7 +1,7 @@
 ---
 paths:
   - "templates/shorts/**"
-  - ".archon/**"
+  - "templates/**"
   - ".claude/skills/diy-yt-creator/**"
 ---
 
@@ -15,7 +15,7 @@ The reason: Shorts loop. The final frame becomes the first frame on the next loo
 
 All five, on screen at the same time, **held static for at least 1.5 seconds** before the Short ends:
 
-1. **Topic statement** — the single most important phrase from the video, sized as the dominant element. Minimum 120px on canvas (recommended 140–200px). Not a question; a punchline. Examples: "CLAUDE CODE 2.0 IS HERE", "ARCHON BEATS CURSOR", "GEMINI 3 LEAKED".
+1. **Topic statement** — the single most important phrase from the video, sized as the dominant element. Minimum 120px on canvas (recommended 140–200px). Not a question; a punchline. Examples: "VERSION 2.0 IS HERE", "ACME BEATS RIVAL", "NEW MODEL LEAKED".
 2. **Visual anchor** — the hero icon, logo, version number, screenshot, or product mark that ties the topic to a recognizable thing. The viewer's eye must land on this within 200ms of pausing.
 3. **Brand chrome** — the channel/brand wordmark or avatar, bottom-left or top-left corner, small but legible (≥ 40px logo height). This is what makes a screenshot trace back to the channel.
 4. **Outcome / receipt** — one short line stating WHAT the viewer learns by watching (or learned, if they watched). Not a CTA. Examples: "5 features in 30 seconds", "the new default model", "what changed in 2.0". Min 36px, recommended 44–56px.
@@ -112,7 +112,7 @@ If any answer is "no", the final frame fails the rule. Rework before render.
 ## Where this rule applies
 
 - All vertical Shorts (`templates/shorts/<style>/`, every `videos/<slug>/` with 1080×1920 canvas).
-- Includes derivatives — Anthropic, Archon, Google, news-explainer, claude-code-version, and any future shorts variants.
+- Includes derivatives — every Shorts template.
 
 ## Where this rule does NOT apply
 

@@ -1,7 +1,7 @@
 ---
 paths:
   - "templates/shorts/**"
-  - ".archon/**"
+  - "templates/**"
   - ".claude/skills/diy-yt-creator/**"
 ---
 
@@ -58,7 +58,6 @@ Pick from these patterns when the anchor is a chart screenshot:
 
 ## Where this rule applies
 
-- All Anthropic-branded shorts (`templates/shorts/anthropic/` and any video that
   forks from it).
 - Any video where the visual anchor is a real screenshot of a bar chart, line
   chart, leaderboard, or table.

@@ -2,10 +2,10 @@
 
 End-to-end pipeline that turns a **topic prompt** into a previewable HyperFrames Short in the Classic dev-tool dark aesthetic (bright blue + sky blue + soft indigo + teal, deep navy canvas). Zero manual steps; ends at preview, never renders.
 
-This is the **default template playbook** -- use it for any topic that is not specifically Archon-workflow content or Anthropic/Claude content. The shape is identical to [new-anthropic-short.md](./new-anthropic-short.md) and [new-archon-short.md](./new-archon-short.md). If you have used either, the deltas are:
+This is the **default template playbook** -- use it for any topic that is not covered by a custom template. The shape is identical to . If you have used either, the deltas are:
 
-- Template: `templates/shorts/classic/` (instead of `templates/shorts/anthropic/` or `templates/shorts/archon/`)
-- Palette: bright blue / sky blue / soft indigo / teal-green rotation (no Archon cyan/magenta, no Anthropic orange/cream)
+- Template: `templates/shorts/classic/`
+- Palette: bright blue / sky blue / soft indigo / teal-green rotation
 - Hero slam: uses a bright-blue->sky-blue gradient text-fill with a 4s `background-position` drift. Use ONCE per video.
 - Top banner: shipped as a CSS-rendered `<div id="top-banner-wordmark">` reading "YOUR BRAND" -- **this is a placeholder you MUST replace** with the brand or product name that fits the video topic.
 - Default CTA URL: `your-domain.com` -- **this is a placeholder you MUST replace** with the real URL for the video's subject. Note it in the report if you use a topic-derived URL.
@@ -150,7 +150,7 @@ python scripts/elevenlabs-tts.py videos/<slug> --shorts --no-chunk
 
 **Same output contract either way.** Both scripts write `videos/<slug>/audio/narration.wav` (the narration) AND `videos/<slug>/transcript.json` (flat `[{word, start, end}, ...]` array). Step 6 (transcribe) is therefore SKIPPED — both engines return alignment data inline, no Whisper pass needed. `scripts/compute_timings.py` doesn't care which engine generated the transcript.
 
-Both scripts load `.env` from both `repo_root/.env` and `repo_root/.archon/.env`.
+Both scripts load `.env` from both `repo_root/.env`.
 
 **Voice / model / settings are read from `.env`.** The tested-good values for shorts:
 
@@ -209,7 +209,7 @@ Edit in this exact order (one Edit per change):
 2. **`<div id="root">`** `data-duration` -> `total_duration` (rounded to 0.1s)
 3. **`#top-banner-wordmark`** -- replace "YOUR BRAND" with the brand name or product name relevant to the video topic. Use ALL CAPS to match the letterform. Examples: if covering Kubernetes, write "KUBERNETES"; if covering a company's tool, write the company name.
 4. **Phase 1**: `#p1-overline`, `#p1-pre`, `#p1-hero` (the slam word -- keep <=7 chars at 200px, or drop to 160-180px in CSS for longer words), `#p1-caption`. The bright-blue->sky-blue gradient text-fill on `#p1-hero` is the signature classic flourish -- use it ONCE per video.
-5. **Phase 2**: `#p2-overline`, `#p2-headline`, both `.stat-pill` blocks (`.stat-num` and `.stat-label`). Pill accent classes are `.cyan` and `.magenta` (class names retained from the archon template for structural parity, but they render as bright blue and sky blue here -- see DESIGN.md).
+5. **Phase 2**: `#p2-overline`, `#p2-headline`, both `.stat-pill` blocks (`.stat-num` and `.stat-label`). Pill accent classes are `.cyan` and `.magenta` (class names kept as class names, but they render as bright blue and sky blue here -- see DESIGN.md).
 6. **Phase 3**: `#p3-overline`, all three `.tl-card` blocks (`.tl-date`, `.tl-title`, `.tl-sub`). Rotate accent classes (`cyan` -> `purple` -> `blue`, which render here as bright-blue -> soft-indigo -> teal-green) so no two adjacent cards share an accent. Sky blue is reserved for the CTA (Phase 4).
 7. **Phase 4**: `#p4-overline`, `#p4-url` (replace `your-domain.com` with the real URL for this video's topic), `#p4-subscribe`. The CTA pill uses sky blue -- closing accent that mirrors Phase 1's gradient end.
 8. **Transition timestamps**: replace `const T1 = 5.6;`, `const T2 = 11.6;`, `const T3 = 17.6;` with computed values
@@ -301,7 +301,6 @@ That's it. Stop. Wait for user to iterate or trigger render manually.
 - [ ] Audio element wired with correct `data-duration`
 - [ ] Hero word fits at the chosen `#p1-hero` font-size -- re-check if you changed the word
 - [ ] Gradient text-fill (`#p1-hero` `background-clip: text`) appears on AT MOST one element in the entire composition
-- [ ] No Archon cyan/magenta or Anthropic orange/cream anywhere in the composition
 - [ ] Preview URL is reachable (the `hyperframes preview` background command is still running)
 
 If any item fails, fix it before reporting. Don't claim success on a half-built composition.
@@ -312,8 +311,6 @@ If any item fails, fix it before reporting. Don't claim success on a half-built 
 - Never fabricate stats, dates, URLs, or quotes. Ask for source if missing.
 - Never modify `templates/shorts/classic/` -- only the copy under `videos/<slug>/`.
 - Never use the bright-blue->sky-blue gradient text-fill on more than one element per video -- it's the signature classic flourish; using it twice dilutes it.
-- Never use Archon cyan (`#22D9A0`) or magenta (`#E64DCC`) as an accent.
-- Never use Anthropic orange (`#E07B3C`) or cream-clay (`#C97A5C`) as an accent.
 - Never use `Math.random()` / `Date.now()` in the generated composition (HyperFrames is deterministic).
 - Never write `<br>` in content text -- use `max-width` for natural wrapping (HyperFrames `/hyperframes` skill rule).
 - Never animate `visibility` or `display` -- use opacity (HyperFrames rule). `tl.set({visibility: ...})` IS allowed.

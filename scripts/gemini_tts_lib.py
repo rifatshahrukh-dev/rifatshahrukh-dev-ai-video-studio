@@ -212,11 +212,11 @@ def align_words(text: str, audio: np.ndarray) -> list[dict]:
 
 
 def settings_from_env(shorts: bool = False) -> dict:
-    """API key, model, voice and style from the environment (.archon/.env)."""
+    """API key, model, voice and style from the environment (environment variables)."""
     key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not key:
         raise GeminiTTSError("GEMINI_API_KEY is not set. Get a free key at https://aistudio.google.com/apikey "
-                             "and add GEMINI_API_KEY=... to .archon/.env")
+                             "and set GEMINI_API_KEY in your environment secrets")
     style = os.environ.get("GEMINI_TTS_STYLE", DEFAULT_STYLE)
     if shorts:
         style = os.environ.get("GEMINI_TTS_STYLE_SHORTS", style + ", at a lively, brisk pace")
