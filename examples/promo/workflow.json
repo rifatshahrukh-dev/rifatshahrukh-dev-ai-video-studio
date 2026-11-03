@@ -1,0 +1,165 @@
+{
+ "name": "showcrew-promo",
+ "size": [
+  1080,
+  1920
+ ],
+ "duration": 20,
+ "brand": {
+  "bg": "#0E1420",
+  "text": "#FFFFFF",
+  "accent": "#4D8FF7"
+ },
+ "items": [
+  {
+   "id": "h1",
+   "kind": "text",
+   "text": "Your own\nmarketing\nproduction house",
+   "y": 520,
+   "size": 100,
+   "at": {
+    "t": 0.3
+   },
+   "hold": 3.4
+  },
+  {
+   "id": "c1",
+   "kind": "card",
+   "text": "Brief it once",
+   "sub": "The crew does the rest.",
+   "y": 1250,
+   "at": {
+    "t": 3.9
+   },
+   "hold": 2.4,
+   "sfx": "notify-ding"
+  },
+  {
+   "id": "h2",
+   "kind": "text",
+   "text": "Meet the crew",
+   "y": 520,
+   "size": 96,
+   "at": {
+    "t": 6.6
+   },
+   "hold": 2.6
+  },
+  {
+   "id": "r1",
+   "kind": "card",
+   "text": "Scripter and Director",
+   "sub": "Scripts, storyboards, pacing",
+   "y": 900,
+   "at": {
+    "t": 6.9
+   },
+   "hold": 2.4,
+   "sfx": "notify-ding"
+  },
+  {
+   "id": "r2",
+   "kind": "card",
+   "text": "Editor and Sound",
+   "sub": "Captions, music, pop-up sounds",
+   "y": 1130,
+   "at": {
+    "t": 7.9
+   },
+   "hold": 2.4,
+   "sfx": "notify-ding"
+  },
+  {
+   "id": "r3",
+   "kind": "card",
+   "text": "Brand guardian and Producer",
+   "sub": "Your look, privacy blur, quality checks",
+   "y": 1360,
+   "at": {
+    "t": 8.9
+   },
+   "hold": 2.4,
+   "sfx": "notify-ding"
+  },
+  {
+   "id": "h3",
+   "kind": "text",
+   "text": "And it checks its own work",
+   "y": 520,
+   "size": 90,
+   "at": {
+    "t": 11.5
+   },
+   "hold": 3.0
+  },
+  {
+   "id": "f1",
+   "kind": "card",
+   "text": "Words drive the timing",
+   "sub": "Captions and pop-ups land on the spoken word",
+   "y": 900,
+   "at": {
+    "t": 11.9
+   },
+   "hold": 2.6,
+   "sfx": "notify-ding"
+  },
+  {
+   "id": "f2",
+   "kind": "card",
+   "text": "Lip-sync check",
+   "sub": "Flags a voice playing over a closed mouth",
+   "y": 1130,
+   "at": {
+    "t": 13.0
+   },
+   "hold": 2.6,
+   "sfx": "notify-ding"
+  },
+  {
+   "id": "f3",
+   "kind": "card",
+   "text": "Free by default",
+   "sub": "Asks before any paid tool or upload",
+   "y": 1360,
+   "at": {
+    "t": 14.1
+   },
+   "hold": 2.5,
+   "sfx": "notify-ding"
+  },
+  {
+   "id": "logo",
+   "kind": "image",
+   "src": "logo.svg",
+   "y": 640,
+   "at": {
+    "t": 16.8
+   },
+   "hold": 3.2,
+   "keep": true
+  },
+  {
+   "id": "cta",
+   "kind": "text",
+   "text": "Paste the repo into your AI.\nIt sets itself up.",
+   "y": 1000,
+   "size": 70,
+   "at": {
+    "t": 17.4
+   },
+   "hold": 2.6,
+   "keep": true
+  }
+ ],
+ "audio": [
+  {
+   "id": "music",
+   "src": "audio/music.mp3",
+   "at": {
+    "t": 0
+   },
+   "volume": 0.35
+  }
+ ]
+}

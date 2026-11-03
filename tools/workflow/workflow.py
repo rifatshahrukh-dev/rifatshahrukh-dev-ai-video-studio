@@ -10,7 +10,7 @@ Spec (all times in seconds; anything can anchor to a spoken word instead):
           {"id":"card","kind":"card","text":"Script. Film. Edit.","sub":"One brief.","y":1100,"at":{"t":1.2},"hold":3,"sfx":"notify-ding"},
           {"id":"clip","kind":"video","src":"clips/a.mp4","at":{"t":0},"hold":5}],
  "audio":[{"id":"voice","src":"audio/voice.wav","at":{"t":0},"volume":1}, {"id":"music","src":"audio/music.wav","at":{"t":0},"volume":0.15}]}
-kinds: text, card (white UI card, bold title + grey line), image, video. "sfx" on an item plays shared/audio/sfx/<name> at its start.
+kinds: text, card (white UI card, bold title + grey line), image, video. "keep":true leaves an item on screen to the end; "\n" in text = line break. "sfx" on an item plays shared/audio/sfx/<name> at its start.
 Changing the script only means re-running build: word anchors move every item with it. Pop-ups share one soft motion (rise + fade, 0.45 s).
 """
 import html
@@ -56,7 +56,7 @@ def build_html(spec, rows, dur):
         i, e = r["id"], html.escape
         y = r.get("y", 700)
         if r["kind"] == "text":
-            el.append(f'<div class="i t" id="{i}" style="top:{y}px;font-size:{r.get("size", 90)}px">{e(r.get("text", ""))}</div>')
+            el.append(f'<div class="i t" id="{i}" style="top:{y}px;font-size:{r.get("size", 90)}px">{e(r.get("text", "")).replace(chr(10), "<br>")}</div>')
         elif r["kind"] == "card":
             el.append(f'<div class="i c" id="{i}" style="top:{y}px"><b>{e(r.get("text", ""))}</b><i>{e(r.get("sub", ""))}</i></div>')
         elif r["kind"] == "image":
@@ -64,7 +64,8 @@ def build_html(spec, rows, dur):
         else:
             el.append(f'<video class="clip i m" id="{i}" src="{e(r["src"])}" muted playsinline data-start="{r["start"]}" '
                       f'data-duration="{r["end"] - r["start"]:.3f}" data-track-index="0" style="top:{y}px"></video>')
-        tl.append(f'tl.from("#{i}",{{y:30,opacity:0,duration:.45}},{r["start"]}).to("#{i}",{{opacity:0,duration:.3}},{max(r["end"] - .3, r["start"])});')
+        fade = "" if r.get("keep") else f'.to("#{i}",{{opacity:0,duration:.3}},{max(r["end"] - .3, r["start"])})'
+        tl.append(f'tl.from("#{i}",{{y:30,opacity:0,duration:.45}},{r["start"]}){fade};')
         if r.get("sfx"):
             f = next((x for x in sorted(os.listdir(SFX_DIR)) if x.startswith(r["sfx"])), None)
             if not f:
@@ -79,7 +80,7 @@ def build_html(spec, rows, dur):
 <style>*{{margin:0;padding:0;box-sizing:border-box}}html,body{{width:{w}px;height:{h}px;overflow:hidden;background:{b["bg"]};font-family:system-ui,sans-serif;color:{b["text"]}}}
 #root{{position:relative;width:{w}px;height:{h}px}}.i{{position:absolute}}.t{{left:60px;right:60px;text-align:center;font-weight:800;line-height:1.1}}
 .c{{left:140px;right:140px;background:#fff;color:#111;border-radius:36px;padding:44px;box-shadow:0 30px 80px rgba(0,0,0,.4)}}.c b{{display:block;font-size:54px}}.c i{{font-style:normal;font-size:36px;color:#667}}
-.m{{left:0;width:{w}px}}</style></head><body>
+.m{{left:90px;width:{w - 180}px}}</style></head><body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{dur}" data-width="{w}" data-height="{h}">
 {chr(10).join(el)}
 {tags}
