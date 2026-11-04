@@ -50,10 +50,15 @@ def have_secret(name, env=os.environ):
     return bool(env.get(name, "").strip())
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *a, **k):
+        return None  # a redirect is an answer: do not follow it to another host that may be blocked
+
+
 def reachable(host, timeout=6):
-    """True if an HTTPS request gets any answer (even 403/404). A refused tunnel or no route means blocked."""
+    """True if an HTTPS request gets any answer (even 403/404/redirect). A refused tunnel or no route means blocked."""
     try:
-        urllib.request.urlopen(urllib.request.Request(f"https://{host}/", method="HEAD"), timeout=timeout)
+        urllib.request.build_opener(_NoRedirect).open(urllib.request.Request(f"https://{host}/", method="HEAD"), timeout=timeout)
         return True
     except urllib.error.HTTPError:
         return True
