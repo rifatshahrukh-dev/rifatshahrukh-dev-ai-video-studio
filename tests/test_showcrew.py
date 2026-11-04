@@ -72,3 +72,14 @@ class Workflow(unittest.TestCase):
         rows, dur, bad = m.resolve({"duration": 3, "transcript": "t.json", "items": [{"id": "a", "kind": "text", "at": {"word": "free"}, "hold": 2}]}, d)
         self.assertEqual((rows[0]["start"], dur), (2.0, 3))
         self.assertTrue(bad)
+
+
+class Voice(unittest.TestCase):
+    def test_pron_and_engine(self):
+        s = importlib.util.spec_from_file_location("vc", os.path.join(os.path.dirname(__file__), "..", "scripts/voice.py"))
+        m = importlib.util.module_from_spec(s); s.loader.exec_module(m)
+        self.assertEqual(m.apply_pron("Showcrew makes GIFs, a gif.", {"gif": "jiff"}), "Showcrew makes GIFs, a jiff.")
+        self.assertEqual(m.pick_engine({"GEMINI_API_KEY": "x"}), "gemini")
+        self.assertEqual(m.pick_engine({"ELEVENLABS_API_KEY": "x", "GEMINI_API_KEY": "y"}), "elevenlabs")
+        with self.assertRaises(SystemExit):
+            m.pick_engine({}, kokoro_dir="/nonexistent")

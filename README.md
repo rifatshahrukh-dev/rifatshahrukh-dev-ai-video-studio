@@ -47,6 +47,7 @@ Doing it by hand: [`docs/SETUP-STEP-BY-STEP.md`](docs/SETUP-STEP-BY-STEP.md).
 
 ## Features
 
+- **One voice command** (`scripts/voice.py`): picks ElevenLabs, Gemini or offline Kokoro, whichever you have set up, applies your pronunciation list, and writes the same narration and word-timing files every time.
 - Voice-over in any language: Gemini TTS (free tier), Kokoro (free, offline; `scripts/kokoro-onnx-tts.py` needs no PyTorch), Edge fallback, ElevenLabs (paid).
 - Captions and highlights synced to every spoken word; no line cut off.
 - **Workflow file** (`tools/workflow/`): describe a video once in JSON (text, cards, images, clips, sounds, music), anchored to spoken words. `check` validates and shows the timings, `build` writes the HyperFrames video and a report. Change the script and rebuild: everything moves with the words.
