@@ -10,7 +10,7 @@ Spec (all times in seconds; anything can anchor to a spoken word instead):
           {"id":"card","kind":"card","text":"Script. Film. Edit.","sub":"One brief.","y":1100,"at":{"t":1.2},"hold":3,"sfx":"notify-ding"},
           {"id":"clip","kind":"video","src":"clips/a.mp4","at":{"t":0},"hold":5}],
  "audio":[{"id":"voice","src":"audio/voice.wav","at":{"t":0},"volume":1}, {"id":"music","src":"audio/music.wav","at":{"t":0},"volume":0.15}]}
-kinds: robot (role: script|edit|sound|qa, "x" = centre), text, card (white UI card, bold title + grey line), image, video. "keep":true leaves an item on screen to the end; "\n" in text = line break. "sfx" on an item plays shared/audio/sfx/<name> at its start.
+kinds: robot (role: script|edit|sound|qa, "x" = centre), text, card (white UI card, bold title + grey line), image, video. "full":true or "w":px sizes an image/video; "keep":true leaves an item on screen to the end; "\n" in text = line break. "sfx" on an item plays shared/audio/sfx/<name> at its start.
 "at" may carry both a word and a fallback "t" (used while there is no transcript yet). Changing the script only means re-running build: word anchors move every item with it. Pop-ups share one soft motion (rise + fade, 0.45 s).
 """
 import html
@@ -64,6 +64,15 @@ def robot_svg(role):
             f'<rect x="32" y="136" width="24" height="12" rx="6" fill="{body}"/><rect x="144" y="136" width="24" height="12" rx="6" fill="{body}"/>{extra}</svg>')
 
 
+def place(r, w):
+    """Image/video width: "full" = edge to edge, "w" = that many pixels centred, default = the page minus 90 px each side."""
+    if r.get("full"):
+        return f"left:0;width:{w}px"
+    if r.get("w"):
+        return f"left:{(w - r['w']) // 2}px;width:{r['w']}px"
+    return ""
+
+
 def build_html(spec, rows, dur):
     w, h = spec.get("size", [1080, 1920])
     b = {"bg": "#0E1420", "text": "#FFFFFF", "accent": "#4D8FF7", **spec.get("brand", {})}
@@ -84,10 +93,10 @@ def build_html(spec, rows, dur):
             tl.append(f'tl.to("#{i}-b",{{y:-14,duration:.7,yoyo:true,repeat:{n * 2 - 1},ease:"sine.inOut"}},{r["start"] + .5});'
                       f'tl.to("#{i} .ant",{{opacity:.35,duration:.5,yoyo:true,repeat:{n * 2 + 1},ease:"sine.inOut"}},{r["start"] + .5});')
         elif r["kind"] == "image":
-            el.append(f'<img class="i m" id="{i}" src="{e(r["src"])}" style="top:{y}px">')
+            el.append(f'<img class="i m" id="{i}" src="{e(r["src"])}" style="top:{y}px;{place(r, w)}">')
         else:
             el.append(f'<video class="clip i m" id="{i}" src="{e(r["src"])}" muted playsinline data-start="{r["start"]}" '
-                      f'data-duration="{r["end"] - r["start"]:.3f}" data-track-index="0" style="top:{y}px"></video>')
+                      f'data-duration="{r["end"] - r["start"]:.3f}" data-track-index="0" style="top:{y}px;{place(r, w)}"></video>')
         fade = "" if r.get("keep") else f'.to("#{i}",{{opacity:0,duration:.3}},{max(r["end"] - .3, r["start"])})'
         tl.append(f'tl.from("#{i}",{{y:30,opacity:0,duration:.45}},{r["start"]}){fade};')
         if r.get("sfx"):

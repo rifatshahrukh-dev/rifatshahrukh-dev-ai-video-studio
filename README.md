@@ -16,7 +16,7 @@ Built to be fast and token-friendly, with the numbers to prove it (see [Measured
 ## See what it makes
 
 <p align="center"><a href="docs/assets/showcrew-promo.mp4"><img src="docs/assets/showcrew-promo.gif" alt="Showcrew promo video" width="300"></a><br>
-<sub>A 20-second promo with voice-over, made with Showcrew itself. Click to watch the full video. Its recipe is <a href="examples/promo/workflow.json"><code>examples/promo/workflow.json</code></a>.</sub></p>
+<sub>A 20-second promo made with Showcrew itself: an AI-generated presenter (labelled as such), robot crew, voice-over and music. Click to watch the full video. Its recipe is <a href="examples/promo/workflow.json"><code>examples/promo/workflow.json</code></a>.</sub></p>
 
 ## Start in one minute
 

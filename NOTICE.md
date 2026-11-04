@@ -11,6 +11,7 @@ Showcrew: AI Marketing Studio stands on other people's work. Thank you.
 | [watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover) | Guillaume Meyer | MIT | Opt-in AI-marks removal; **not bundled**, fetched only if the user asks |
 | [Hypit](https://github.com/hypit-ai/hypit) | Hypit.AI | Apache-2.0 with conditions (no hosted resale) | Optional reference-cloning agent; **not bundled**, the user installs it |
 | [LatentSync](https://github.com/bytedance/LatentSync) | ByteDance | Apache-2.0 | Optional lip-sync model; **not bundled**, fetched on the GPU machine |
+| [LTX-2.5](https://github.com/Lightricks/LTX-2) | Lightricks | LTX licence (free below a revenue limit, see model card) | Optional AI footage on a rented GPU; weights downloaded by the user |
 | GSAP | GreenSock | see upstream | Animation library loaded by compositions |
 | Noto Sans Bengali | Google / Noto Project | SIL OFL 1.1 | Fonts in `brand/fonts/` |
 | Kokoro TTS, kokoro-onnx | hexgrad, thewh1teagle | Apache-2.0 / MIT | Optional free offline voice; model files are downloaded by the user |
