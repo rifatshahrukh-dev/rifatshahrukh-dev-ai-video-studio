@@ -5,7 +5,9 @@
 --face is the face box in video pixels (look at one frame sheet to pick it). The mouth is the lower 40% of that box.
 Reports: speech lines (voice on), the share of each line where the mouth moves, the best audio-to-mouth delay in seconds
 (about 0 is in sync; |delay| above 0.12 s looks off), and any line where the mouth stays shut while the voice speaks.
-Exit code 1 when a problem is found. It measures motion, not words: it cannot prove a lip shape is right.
+Exit code 1 when a problem is found. It measures motion, not words: it cannot prove a lip shape is right. It works best on a steady, front-facing face; head movement
+and changing light also count as mouth motion and can hide a mismatch (tested on an AI clip with a moving head: it could not tell synced from unsynced).
+Always confirm with a frame strip of the face at the start and end of each line.
 """
 import argparse
 import subprocess
