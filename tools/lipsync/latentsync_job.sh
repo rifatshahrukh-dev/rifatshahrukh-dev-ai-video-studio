@@ -9,7 +9,8 @@ FACE=$(realpath "${1:?face video}"); VOICE=$(realpath "${2:?voice wav}"); OUT=$(
 W=${LATENTSYNC_DIR:-$HOME/LatentSync}
 [ -d "$W" ] || git clone -q --depth 1 https://github.com/bytedance/LatentSync "$W"
 cd "$W"
-[ -d .venv ] || { python3 -m venv .venv && .venv/bin/pip install -q -r requirements.txt huggingface_hub; }   # upstream also offers setup_env.sh
+command -v apt-get >/dev/null && [ "$(id -u)" = 0 ] && apt-get install -y -qq libgl1 libglib2.0-0 ffmpeg >/dev/null 2>&1 || true
+[ -d .venv ] || { pip install -q uv && uv venv -q --python 3.10 .venv && uv pip install -q --python .venv/bin/python -r requirements.txt huggingface_hub; }   # upstream targets Python 3.10
 [ -f checkpoints/latentsync_unet.pt ] || .venv/bin/huggingface-cli download "ByteDance/LatentSync-$V" latentsync_unet.pt whisper/tiny.pt --local-dir checkpoints
 .venv/bin/python -m scripts.inference --unet_config_path configs/unet/stage2_512.yaml --inference_ckpt_path checkpoints/latentsync_unet.pt \
   --inference_steps 20 --guidance_scale 1.5 --enable_deepcache --video_path "$FACE" --audio_path "$VOICE" --video_out_path "$OUT"
