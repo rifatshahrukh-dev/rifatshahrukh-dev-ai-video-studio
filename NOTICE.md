@@ -12,6 +12,7 @@ Showcrew: AI Marketing Studio stands on other people's work. Thank you.
 | [Hypit](https://github.com/hypit-ai/hypit) | Hypit.AI | Apache-2.0 with conditions (no hosted resale) | Optional reference-cloning agent; **not bundled**, the user installs it |
 | [LatentSync](https://github.com/bytedance/LatentSync) | ByteDance | Apache-2.0 | Optional lip-sync model; **not bundled**, fetched on the GPU machine |
 | [LTX-2.5](https://github.com/Lightricks/LTX-2) | Lightricks | LTX licence (free below a revenue limit, see model card) | Optional AI footage on a rented GPU; weights downloaded by the user |
+| [GFPGAN](https://github.com/TencentARC/GFPGAN) 1.4 | TencentARC | Apache-2.0 | Optional face sharpening; the ONNX weights come from facefusion-assets, downloaded by the user (check their terms) |
 | GSAP | GreenSock | see upstream | Animation library loaded by compositions |
 | Noto Sans Bengali | Google / Noto Project | SIL OFL 1.1 | Fonts in `brand/fonts/` |
 | Kokoro TTS, kokoro-onnx | hexgrad, thewh1teagle | Apache-2.0 / MIT | Optional free offline voice; model files are downloaded by the user |

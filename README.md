@@ -52,6 +52,7 @@ Doing it by hand: [`docs/SETUP-STEP-BY-STEP.md`](docs/SETUP-STEP-BY-STEP.md).
 - Captions and highlights synced to every spoken word; no line cut off.
 - **Workflow file** (`tools/workflow/`): describe a video once in JSON (text, cards, images, clips, sounds, music), anchored to spoken words. `check` validates and shows the timings, `build` writes the HyperFrames video and a report. Change the script and rebuild: everything moves with the words.
 - **Lip-sync check** (`tools/lipsync/lipsync_check.py`): free, no model. Tells you when a voice line plays while the mouth is shut, and the audio-to-mouth delay.
+- **Face enhance** (`tools/lipsync/face_enhance.py`): free, CPU-only sharpening of a face after lip-sync, which otherwise leaves the mouth soft.
 - **Lip-sync maker** (`tools/lipsync/latentsync_job.sh`): re-times a face to a new voice line with LatentSync (Apache-2.0) on a rented or free GPU. Untested end to end; always checked afterwards with the lip-sync check.
 - Tutorial builder: cuts waiting and typing from a screen recording, pop-out button cards, step titles.
 - Privacy blurring of names, numbers, addresses and shop names.
