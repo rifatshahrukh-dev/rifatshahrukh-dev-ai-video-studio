@@ -46,6 +46,11 @@ pick **Limited**, add each host under **Allowed domains**, keep **Allow package 
 
 **Claude Code on the web:** environment menu, **Edit**, **Network secrets** (or **Environment variables**), add `NAME=value`, save,
 start a new session.
+**Gemini key notes:** the key must be sent in the `x-goog-api-key` header (the kit's scripts do this). New AI Studio keys are
+"auth keys"; old unrestricted keys can be rejected (401). If voice fails with 401/403, create a new key at aistudio.google.com/apikey
+or restrict the old one to "Gemini API only". The free tier may need project verification (Google setting). Test without printing
+the key: `curl -s -o /dev/null -w "%{http_code}" https://generativelanguage.googleapis.com/v1beta/models -H "x-goog-api-key: $GEMINI_API_KEY"`
+should print 200. No key at all? Offline Kokoro voice still works.
 **Local:** `cp .env.example .env`, fill in the values. `.env` is git-ignored.
 
 ## Step 4. Brief the Marketing Manager
